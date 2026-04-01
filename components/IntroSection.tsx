@@ -1,0 +1,39 @@
+"use client";
+
+import { useReveal } from "@/hooks/useReveal";
+import VideoEmbed from "@/components/VideoEmbed";
+
+interface IntroSectionProps {
+  introText: string[];
+  videoLabel: string;
+  loomId: string;
+}
+
+export default function IntroSection({ introText, videoLabel, loomId }: IntroSectionProps) {
+  const ref = useReveal();
+
+  return (
+    <section id="intro" className="grid-container pt-[104px] pb-[32px]" ref={ref}>
+      <div className="grid-12">
+        <div className="col-span-4 md:col-start-4 md:col-span-6 reveal">
+          {introText.map((text, i) => (
+            <p
+              key={i}
+              className="text-black text-[32px] font-normal"
+              style={{ lineHeight: "40px", marginTop: i > 0 ? 40 : 0 }}
+            >
+              {text}
+            </p>
+          ))}
+        </div>
+
+        <div className="col-span-12 mt-[104px] reveal">
+          <p className="text-black text-[32px] font-medium mb-[16px]" style={{ lineHeight: "40px" }}>
+            {videoLabel}
+          </p>
+          <VideoEmbed loomId={loomId} />
+        </div>
+      </div>
+    </section>
+  );
+}
