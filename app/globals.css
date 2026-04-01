@@ -1,33 +1,5 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: "Diagramm";
-  src: url("/fonts/diagramm-regular.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Diagramm";
-  src: url("/fonts/diagramm-medium.woff2") format("woff2");
-  font-weight: 500;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Diagramm";
-  src: url("/fonts/diagramm-semibold.woff2") format("woff2");
-  font-weight: 600;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Diagramm";
-  src: url("/fonts/diagramm-bold.woff2") format("woff2");
-  font-weight: 700;
-  font-display: swap;
-}
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -36,13 +8,13 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Diagramm", sans-serif;
+  --font-sans: var(--font-diagramm), sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Diagramm", sans-serif;
+  font-family: var(--font-diagramm), sans-serif;
 }
 
 .grid-container {

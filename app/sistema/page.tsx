@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import VideoEmbed from "@/components/VideoEmbed";
+import basePath from "@/lib/basePath";
 
 export default function SistemaPage() {
   const [navActive, setNavActive] = useState(0);
@@ -192,7 +193,7 @@ export default function SistemaPage() {
         </p>
       </div>
       <div className="mt-[24px] relative w-full" style={{ aspectRatio: "1440 / 512" }}>
-        <img src="/hero.png" alt="" className="w-full h-full object-cover" />
+        <img src={`${basePath}/hero.png`} alt="" className="w-full h-full object-cover" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="flex flex-col items-center max-w-[542px] text-center">
             <p className="text-white text-[14px] font-normal" style={{ lineHeight: "22px" }}>
@@ -229,7 +230,7 @@ export default function SistemaPage() {
           <div>
             <p className="text-black/40 text-[12px] mb-[12px]">Sobre hero — bg-black/16</p>
             <div className="rounded-[16px] overflow-hidden relative" style={{ aspectRatio: "1440 / 120" }}>
-              <img src="/hero.png" alt="" className="w-full h-full object-cover" />
+              <img src={`${basePath}/hero.png`} alt="" className="w-full h-full object-cover" />
               <div className="absolute inset-0 flex justify-center pt-[24px]">
                 <ul
                   className="flex items-center gap-[24px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] bg-black/16 backdrop-blur-[36px] text-white text-[14px] font-normal"
@@ -308,7 +309,7 @@ export default function SistemaPage() {
           <div>
             <p className="text-black/40 text-[12px] mb-[12px]">Sobre imagen</p>
             <div className="rounded-[16px] overflow-hidden relative flex items-center justify-center py-[48px]" style={{ aspectRatio: "1440 / 200" }}>
-              <img src="/hero.png" alt="" className="absolute inset-0 w-full h-full object-cover" />
+              <img src={`${basePath}/hero.png`} alt="" className="absolute inset-0 w-full h-full object-cover" />
               <div className="relative flex items-center gap-[8px]">
                 <button
                   className="px-[32px] pt-[12px] pb-[11px] rounded-[72px] bg-black/16 backdrop-blur-[36px] hover:backdrop-blur-[6px] hover:bg-black/36 transition-all duration-500 ease-out text-white text-[14px] font-normal cursor-pointer"
@@ -427,7 +428,7 @@ export default function SistemaPage() {
       </div>
       <div className="mt-[32px] bg-black relative" style={{ aspectRatio: "1440 / 400" }}>
         <div className="absolute bottom-[32px] left-[24px]">
-          <img src="/logos.svg" alt="Cosentino × Modulor Studios" className="h-auto w-auto" style={{ width: 400 }} />
+          <img src={`${basePath}/logos.svg`} alt="Cosentino × Modulor Studios" className="h-auto w-auto" style={{ width: 400 }} />
         </div>
       </div>
 

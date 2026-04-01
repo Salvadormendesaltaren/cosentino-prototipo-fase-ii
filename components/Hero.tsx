@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import basePath from "@/lib/basePath";
 
 interface HeroProps {
   heroImage: string;
@@ -13,7 +14,7 @@ export default function Hero({ heroImage, heroTitle }: HeroProps) {
   return (
     <div className="relative w-full h-screen">
       <Image
-        src={heroImage}
+        src={`${basePath}${heroImage}`}
         alt=""
         width={2880}
         height={1024}
