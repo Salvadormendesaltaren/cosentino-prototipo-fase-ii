@@ -57,7 +57,7 @@ export const sections: Section[] = [
       "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
     ],
     videoLabel: "Video explicativo",
-    loomId: "285713651ecf4fc4899cb7ae055e7af1",
+    loomId: "bdad78c149a34424905dd03bd5fbd9f7",
     bottomTitle: "Fases de la investigación",
     columns: [
       {
