@@ -1,5 +1,7 @@
 "use client";
 
+import basePath from "@/lib/basePath";
+
 export interface ArticleData {
   image: string;
   label?: string;
@@ -22,7 +24,7 @@ function CardThumbnail({ article }: { article: ArticleData }) {
     <div className="cursor-pointer group">
       <div className="w-full overflow-hidden" style={{ aspectRatio: "672 / 872" }}>
         <img
-          src={article.image}
+          src={`${basePath}${article.image}`}
           alt=""
           className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
         />
@@ -49,7 +51,7 @@ function SuperThumbnail({ article }: { article: ArticleData }) {
   return (
     <div className="relative w-full h-screen overflow-hidden cursor-pointer group">
       <img
-        src={article.image}
+        src={`${basePath}${article.image}`}
         alt=""
         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
       />

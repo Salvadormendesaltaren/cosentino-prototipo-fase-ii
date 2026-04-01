@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import basePath from "@/lib/basePath";
 
 const NAV_LINKS = [
   "Colores", "Marcas", "Espacios", "Inspiración",
@@ -24,9 +25,9 @@ export default function Header() {
     >
       <div className="max-w-[1440px] mx-auto flex items-center justify-between px-6 h-[66px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <a href="/">
+        <a href={`${basePath}/`}>
           <img
-            src="/images/logo.svg"
+            src={`${basePath}/images/logo.svg`}
             alt="Cosentino"
             className={`h-[14px] w-auto transition-all duration-500 ${
               scrolled ? "invert" : ""

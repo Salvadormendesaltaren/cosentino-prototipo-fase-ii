@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import ArticleThumbnail from "@/components/ArticleThumbnail";
 import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "./layout";
+import basePath from "@/lib/basePath";
 
 const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
 
@@ -62,7 +63,7 @@ export default function PrototipoPage() {
       {/* Hero — full viewport */}
       <div className="relative w-full h-screen">
         <img
-          src="/images/fondo-journal.png"
+          src={`${basePath}/images/fondo-journal.png`}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />

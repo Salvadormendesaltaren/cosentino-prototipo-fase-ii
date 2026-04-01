@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import ArticleThumbnail from "@/components/ArticleThumbnail";
 import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "../layout";
+import basePath from "@/lib/basePath";
 
 const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
 const SUBS = ["Bathrooms", "Kitchens", "Interiors", "Facades", "Contract"];
@@ -51,7 +52,7 @@ export default function EspaciosPage() {
       {/* Hero — full viewport */}
       <div className="relative w-full h-screen">
         <img
-          src="/images/espacios-hero.png"
+          src={`${basePath}/images/espacios-hero.png`}
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
         />
