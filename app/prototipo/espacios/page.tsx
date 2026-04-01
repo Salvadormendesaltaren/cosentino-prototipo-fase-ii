@@ -134,6 +134,8 @@ export default function EspaciosPage() {
                 title: "Continuidad y resistencia en una villa con carácter",
                 category: "Espacios · Salones",
               }}
+              href="/prototipo/producto/continuidad-y-resistencia"
+              onNavigate={navigateTo}
             />
           </div>
         </div>

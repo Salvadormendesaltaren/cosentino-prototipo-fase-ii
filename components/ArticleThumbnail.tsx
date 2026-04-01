@@ -12,16 +12,19 @@ export interface ArticleData {
 interface ArticleThumbnailProps {
   article: ArticleData;
   variant: "super" | "big" | "mid" | "small";
+  href?: string;
+  onNavigate?: (href: string) => void;
 }
 
-export default function ArticleThumbnail({ article, variant }: ArticleThumbnailProps) {
-  if (variant === "super") return <SuperThumbnail article={article} />;
-  return <CardThumbnail article={article} />;
+export default function ArticleThumbnail({ article, variant, href, onNavigate }: ArticleThumbnailProps) {
+  const handleClick = href && onNavigate ? () => onNavigate(href) : undefined;
+  if (variant === "super") return <SuperThumbnail article={article} onClick={handleClick} />;
+  return <CardThumbnail article={article} onClick={handleClick} />;
 }
 
-function CardThumbnail({ article }: { article: ArticleData }) {
+function CardThumbnail({ article, onClick }: { article: ArticleData; onClick?: () => void }) {
   return (
-    <div className="cursor-pointer group">
+    <div className="cursor-pointer group" onClick={onClick}>
       <div className="w-full overflow-hidden" style={{ aspectRatio: "672 / 872" }}>
         <img
           src={`${basePath}${article.image}`}
@@ -47,9 +50,9 @@ function CardThumbnail({ article }: { article: ArticleData }) {
   );
 }
 
-function SuperThumbnail({ article }: { article: ArticleData }) {
+function SuperThumbnail({ article, onClick }: { article: ArticleData; onClick?: () => void }) {
   return (
-    <div className="relative w-full h-screen overflow-hidden cursor-pointer group">
+    <div className="relative w-full h-screen overflow-hidden cursor-pointer group" onClick={onClick}>
       <img
         src={`${basePath}${article.image}`}
         alt=""
