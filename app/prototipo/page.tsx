@@ -26,7 +26,7 @@ const SUB_HREFS: Record<string, string> = {
 
 export default function PrototipoPage() {
   const { navigateTo } = useProtoCurtain();
-  const [activeSubNav, setActiveSubNav] = useState(0);
+  // activeSubNav removed — SUB_NAV now navigates directly
   const [activeFilter, setActiveFilter] = useState(0);
   const [activeSub, setActiveSub] = useState(0);
   const [overHero, setOverHero] = useState(true);
@@ -67,11 +67,13 @@ export default function PrototipoPage() {
         {SUB_NAV.map((item, i) => (
           <button
             key={item}
-            onClick={() => setActiveSubNav(i)}
+            onClick={() => {
+              if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
+            }}
             className="text-white text-[14px] font-normal cursor-pointer transition-opacity duration-300"
             style={{
               lineHeight: "normal",
-              opacity: activeSubNav === i ? 1 : 0.5,
+              opacity: i === 0 ? 1 : 0.5,
             }}
           >
             {item}

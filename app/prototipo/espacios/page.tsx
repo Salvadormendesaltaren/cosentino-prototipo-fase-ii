@@ -12,7 +12,7 @@ const SUBS = ["Bathrooms", "Kitchens", "Interiors", "Facades"];
 
 export default function EspaciosPage() {
   const { navigateTo } = useProtoCurtain();
-  const [activeSubNav, setActiveSubNav] = useState(0);
+  // activeSubNav removed — SUB_NAV now navigates directly
   const [activeSub, setActiveSub] = useState(-1);
   const [overHero, setOverHero] = useState(true);
   const [searchMode, setSearchMode] = useState(false);
@@ -51,14 +51,17 @@ export default function EspaciosPage() {
 
       {/* Sub-nav: JOURNAL / ENCUENTRA */}
       <div className="fixed top-[66px] left-0 right-0 z-40 flex justify-center gap-[16px] pt-[16px]">
-        {SUB_NAV.map((item, i) => (
+        {SUB_NAV.map((item) => (
           <button
             key={item}
-            onClick={() => setActiveSubNav(i)}
+            onClick={() => {
+              if (item === "JOURNAL") navigateTo("/prototipo");
+              else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
+            }}
             className="text-white text-[14px] font-normal cursor-pointer transition-opacity duration-300"
             style={{
               lineHeight: "normal",
-              opacity: activeSubNav === i ? 1 : 0.5,
+              opacity: 0.5,
             }}
           >
             {item}
