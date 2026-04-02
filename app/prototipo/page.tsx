@@ -62,24 +62,7 @@ export default function PrototipoPage() {
       {/* Header */}
       <Header />
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
-      <div className="fixed top-[66px] left-0 right-0 z-40 flex justify-center gap-[16px] pt-[16px]">
-        {SUB_NAV.map((item, i) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
-            }}
-            className="text-white text-[14px] font-normal cursor-pointer transition-opacity duration-300"
-            style={{
-              lineHeight: "normal",
-              opacity: i === 0 ? 1 : 0.5,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      {/* Sub-nav: JOURNAL / ENCUENTRA — rendered above bottom pill */}
 
       {/* Hero — full viewport (clickable) */}
       <div
@@ -215,6 +198,25 @@ export default function PrototipoPage() {
           Búsqueda temporalmente no disponible
         </div>
       )}
+
+      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+        {SUB_NAV.map((item, i) => (
+          <button
+            key={item}
+            onClick={() => {
+              if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
+            }}
+            className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
+            style={{
+              lineHeight: "normal",
+              opacity: i === 0 ? 1 : 0.4,
+            }}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
 
       {/* Bottom floating nav — glass pill (fixed) */}
       <div

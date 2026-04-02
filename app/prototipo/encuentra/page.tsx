@@ -120,24 +120,7 @@ export default function EncuentraPage() {
       {/* Header */}
       <Header dark />
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
-      <div className="fixed top-[66px] left-0 right-0 z-40 flex justify-center gap-[16px] pt-[16px]">
-        {SUB_NAV.map((item, i) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "JOURNAL") navigateTo("/prototipo");
-            }}
-            className="text-black text-[14px] font-normal cursor-pointer transition-opacity duration-300"
-            style={{
-              lineHeight: "normal",
-              opacity: i === 1 ? 1 : 0.5,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      {/* Sub-nav: JOURNAL / ENCUENTRA — above bottom pill */}
 
       {/* Masonry Grid */}
       <div
@@ -186,6 +169,25 @@ export default function EncuentraPage() {
           Búsqueda temporalmente no disponible
         </div>
       )}
+
+      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+        {SUB_NAV.map((item, i) => (
+          <button
+            key={item}
+            onClick={() => {
+              if (item === "JOURNAL") navigateTo("/prototipo");
+            }}
+            className="text-black/70 text-[13px] font-normal cursor-pointer transition-opacity duration-300"
+            style={{
+              lineHeight: "normal",
+              opacity: i === 1 ? 1 : 0.4,
+            }}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
 
       {/* Bottom floating nav — glass pill */}
       <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">

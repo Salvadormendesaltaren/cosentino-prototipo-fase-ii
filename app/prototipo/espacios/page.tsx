@@ -49,25 +49,7 @@ export default function EspaciosPage() {
         </p>
       </div>
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
-      <div className="fixed top-[66px] left-0 right-0 z-40 flex justify-center gap-[16px] pt-[16px]">
-        {SUB_NAV.map((item) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "JOURNAL") navigateTo("/prototipo");
-              else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
-            }}
-            className="text-white text-[14px] font-normal cursor-pointer transition-opacity duration-300"
-            style={{
-              lineHeight: "normal",
-              opacity: 0.5,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
+      {/* Sub-nav: JOURNAL / ENCUENTRA — rendered above bottom pill */}
 
       {/* Hero — full viewport (clickable) */}
       <div
@@ -204,6 +186,26 @@ export default function EspaciosPage() {
           Búsqueda temporalmente no disponible
         </div>
       )}
+
+      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+        {SUB_NAV.map((item) => (
+          <button
+            key={item}
+            onClick={() => {
+              if (item === "JOURNAL") navigateTo("/prototipo");
+              else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
+            }}
+            className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
+            style={{
+              lineHeight: "normal",
+              opacity: 0.4,
+            }}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
 
       {/* Bottom floating nav — glass pill (fixed) */}
       <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">
