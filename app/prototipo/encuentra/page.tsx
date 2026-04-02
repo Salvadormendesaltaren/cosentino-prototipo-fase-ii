@@ -226,7 +226,6 @@ export default function EncuentraPage() {
             </>
           ) : (
             <>
-              <span className="text-white/30">|</span>
               {PILL_FILTERS.map((f) => (
                 <button
                   key={f.value}
