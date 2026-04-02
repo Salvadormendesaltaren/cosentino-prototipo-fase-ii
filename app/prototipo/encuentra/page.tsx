@@ -5,6 +5,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "../layout";
+import basePath from "@/lib/basePath";
 
 const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
 
@@ -157,7 +158,7 @@ export default function EncuentraPage() {
                 }}
               >
                 <Image
-                  src={item.image}
+                  src={`${basePath}${item.image}`}
                   alt=""
                   width={800}
                   height={600}
