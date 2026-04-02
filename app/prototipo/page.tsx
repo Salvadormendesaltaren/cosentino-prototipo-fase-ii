@@ -7,7 +7,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "./layout";
 import basePath from "@/lib/basePath";
 
-const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
+const SUB_NAV = ["MAGAZINE", "ENCUENTRA"];
 
 const FILTERS: { label: string; href?: string; subs?: string[] }[] = [
   { label: "Todo" },
@@ -62,7 +62,7 @@ export default function PrototipoPage() {
       {/* Header */}
       <Header />
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA — rendered above bottom pill */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA — rendered above bottom pill */}
 
       {/* Hero — full viewport (clickable) */}
       <div
@@ -199,7 +199,7 @@ export default function PrototipoPage() {
         </div>
       )}
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
       <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item, i) => (
           <button
@@ -244,7 +244,7 @@ export default function PrototipoPage() {
           onClick={() => navigateTo("/prototipo")}
           onMouseEnter={() => { if (hasSubs) { lockPill(); setActiveFilter(0); setActiveSub(0); } }}
         >
-          Journal
+          Magazine
         </button>
 
         {/* Lupa */}

@@ -28,7 +28,7 @@ export default function ArchitectsPage() {
             style={{ color: "rgba(0, 0, 0, 0.50)" }}
             onClick={() => navigateTo("/prototipo")}
           >
-            Journal
+            Magazine
           </span>
           <span style={{ color: "rgba(0, 0, 0, 0.50)" }}> · </span>
           <span
@@ -125,7 +125,7 @@ export default function ArchitectsPage() {
           onMouseEnter={() => { if (searchTimeoutRef.current) { clearTimeout(searchTimeoutRef.current); searchTimeoutRef.current = null; } }}
         >
           <button className="font-medium cursor-pointer" onClick={() => navigateTo("/prototipo")}>
-            Journal
+            Magazine
           </button>
 
           {/* Lupa */}

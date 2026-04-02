@@ -7,7 +7,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "../layout";
 import basePath from "@/lib/basePath";
 
-const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
+const SUB_NAV = ["MAGAZINE", "ENCUENTRA"];
 const SUBS = ["Hotels", "Offices", "Retail", "Public"];
 
 export default function ContractPage() {
@@ -41,14 +41,14 @@ export default function ContractPage() {
             className="cursor-pointer transition-opacity hover:opacity-70 text-white/50"
             onClick={() => navigateTo("/prototipo")}
           >
-            Journal
+            Magazine
           </span>
           <span className="text-white/50"> · </span>
           <span className="text-white font-medium">Contract</span>
         </p>
       </div>
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA — rendered above bottom pill */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA — rendered above bottom pill */}
 
       {/* Hero — full viewport (clickable) */}
       <div
@@ -187,13 +187,13 @@ export default function ContractPage() {
         </div>
       )}
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
       <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item) => (
           <button
             key={item}
             onClick={() => {
-              if (item === "JOURNAL") navigateTo("/prototipo");
+              if (item === "MAGAZINE") navigateTo("/prototipo");
               else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
             }}
             className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
@@ -218,7 +218,7 @@ export default function ContractPage() {
           onMouseEnter={() => { if (searchTimeoutRef.current) { clearTimeout(searchTimeoutRef.current); searchTimeoutRef.current = null; } }}
         >
           <button className="font-medium cursor-pointer" onClick={() => navigateTo("/prototipo")}>
-            Journal
+            Magazine
           </button>
 
           {/* Lupa */}

@@ -7,7 +7,7 @@ import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "../layout";
 import basePath from "@/lib/basePath";
 
-const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
+const SUB_NAV = ["MAGAZINE", "ENCUENTRA"];
 
 type Category = "all" | "espacios" | "contract";
 
@@ -120,7 +120,7 @@ export default function EncuentraPage() {
       {/* Header */}
       <Header dark />
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA — above bottom pill */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA — above bottom pill */}
 
       {/* Masonry Grid */}
       <div
@@ -170,13 +170,13 @@ export default function EncuentraPage() {
         </div>
       )}
 
-      {/* Sub-nav: JOURNAL / ENCUENTRA */}
+      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
       <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item, i) => (
           <button
             key={item}
             onClick={() => {
-              if (item === "JOURNAL") navigateTo("/prototipo");
+              if (item === "MAGAZINE") navigateTo("/prototipo");
             }}
             className="text-black/70 text-[13px] font-normal cursor-pointer transition-opacity duration-300"
             style={{
