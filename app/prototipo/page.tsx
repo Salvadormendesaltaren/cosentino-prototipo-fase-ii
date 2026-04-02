@@ -246,6 +246,15 @@ export default function PrototipoPage() {
         >
           Magazine
         </button>
+        <button
+          className="cursor-pointer transition-opacity duration-300"
+          style={{ opacity: 0.5 }}
+          onClick={() => navigateTo("/prototipo/encuentra")}
+          onMouseEnter={() => { if (hasSubs) { lockPill(); setActiveFilter(0); setActiveSub(0); } }}
+        >
+          Encuentra
+        </button>
+        <span className="text-white/30">|</span>
 
         {/* Lupa */}
         <button

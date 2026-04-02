@@ -201,9 +201,13 @@ export default function InterviewsPage() {
           onMouseLeave={() => { if (searchMode) { searchTimeoutRef.current = setTimeout(() => setSearchMode(false), 5000); } }}
           onMouseEnter={() => { if (searchTimeoutRef.current) { clearTimeout(searchTimeoutRef.current); searchTimeoutRef.current = null; } }}
         >
-          <button className="font-medium cursor-pointer" onClick={() => navigateTo("/prototipo")}>
+          <button className="cursor-pointer transition-opacity duration-300" style={{ opacity: 0.5 }} onClick={() => navigateTo("/prototipo")}>
             Magazine
           </button>
+          <button className="cursor-pointer transition-opacity duration-300" style={{ opacity: 0.5 }} onClick={() => navigateTo("/prototipo/encuentra")}>
+            Encuentra
+          </button>
+          <span className="text-white/30">|</span>
 
           {/* Lupa */}
           <button
