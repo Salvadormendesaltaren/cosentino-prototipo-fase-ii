@@ -190,12 +190,9 @@ export default function EncuentraPage() {
           <button className="cursor-pointer transition-opacity duration-300" style={{ opacity: 0.5 }} onClick={() => navigateTo("/prototipo")}>
             Magazine
           </button>
-          {/* Encuentra label with dot */}
-          <span className="flex items-center gap-[8px] font-medium">
-            <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
+          <span className="font-medium">
             Encuentra
           </span>
-          <span className="text-white/30">|</span>
 
           {/* Lupa */}
           <button
