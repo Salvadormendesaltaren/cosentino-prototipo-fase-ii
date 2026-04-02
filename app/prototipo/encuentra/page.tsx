@@ -170,25 +170,6 @@ export default function EncuentraPage() {
         </div>
       )}
 
-      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
-        {SUB_NAV.map((item, i) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "MAGAZINE") navigateTo("/prototipo");
-            }}
-            className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
-            style={{
-              lineHeight: "normal",
-              opacity: i === 1 ? 1 : 0.5,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-
       {/* Bottom floating nav — glass pill */}
       <div className="fixed bottom-[20px] left-0 right-0 z-40 flex justify-center">
         <div

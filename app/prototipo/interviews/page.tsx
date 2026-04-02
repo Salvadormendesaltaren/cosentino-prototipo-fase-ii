@@ -171,26 +171,6 @@ export default function InterviewsPage() {
         </div>
       )}
 
-      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
-        {SUB_NAV.map((item) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "MAGAZINE") navigateTo("/prototipo");
-              else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
-            }}
-            className={`text-[13px] font-normal cursor-pointer transition-all duration-300 ${overHero ? "text-white" : "text-black"}`}
-            style={{
-              lineHeight: "normal",
-              opacity: 0.4,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-
       {/* Bottom floating nav — glass pill */}
       <div className="fixed bottom-[20px] left-0 right-0 z-40 flex justify-center">
         <div

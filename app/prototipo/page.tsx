@@ -199,25 +199,6 @@ export default function PrototipoPage() {
         </div>
       )}
 
-      {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
-        {SUB_NAV.map((item, i) => (
-          <button
-            key={item}
-            onClick={() => {
-              if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
-            }}
-            className={`text-[13px] font-normal cursor-pointer transition-all duration-300 ${overHero ? "text-white" : "text-black"}`}
-            style={{
-              lineHeight: "normal",
-              opacity: i === 0 ? 1 : 0.4,
-            }}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-
       {/* Bottom floating nav — glass pill (fixed) */}
       <div
         ref={pillRef}
