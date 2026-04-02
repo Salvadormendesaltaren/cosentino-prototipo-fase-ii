@@ -181,7 +181,8 @@ export default function EncuentraPage() {
             className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
             style={{
               lineHeight: "normal",
-              opacity: i === 1 ? 1 : 0.4,
+              opacity: i === 1 ? 1 : 0.5,
+              textShadow: "0 1px 6px rgba(0,0,0,0.6), 0 0 14px rgba(0,0,0,0.3)",
             }}
           >
             {item}
