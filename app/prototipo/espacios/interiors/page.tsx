@@ -24,7 +24,7 @@ export default function InteriorsPage() {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-white" ref={revealRef}>
+    <div className="relative w-full min-h-screen bg-white overflow-x-hidden" ref={revealRef}>
       <Header dark />
 
       {/* Breadcrumb */}

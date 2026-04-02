@@ -58,7 +58,7 @@ export default function PrototipoPage() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen" ref={revealRef}>
+    <div className="relative w-full min-h-screen overflow-x-hidden" ref={revealRef}>
       {/* Header */}
       <Header />
 

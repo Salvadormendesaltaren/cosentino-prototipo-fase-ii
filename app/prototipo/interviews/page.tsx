@@ -31,7 +31,7 @@ export default function InterviewsPage() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen" ref={revealRef}>
+    <div className="relative w-full min-h-screen overflow-x-hidden" ref={revealRef}>
       <Header />
 
       {/* Breadcrumb */}

@@ -17,7 +17,7 @@ export default function BathroomsPage() {
   const revealRef = useReveal();
 
   return (
-    <div className="relative w-full min-h-screen bg-white" ref={revealRef}>
+    <div className="relative w-full min-h-screen bg-white overflow-x-hidden" ref={revealRef}>
       <Header dark />
 
       {/* Breadcrumb */}
