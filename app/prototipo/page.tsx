@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Header from "@/components/Header";
 import ArticleThumbnail from "@/components/ArticleThumbnail";
 import { useReveal } from "@/hooks/useReveal";
@@ -10,12 +10,19 @@ import basePath from "@/lib/basePath";
 const SUB_NAV = ["JOURNAL", "ENCUENTRA"];
 
 const FILTERS: { label: string; href?: string; subs?: string[] }[] = [
-  { label: "All" },
-  { label: "Spaces", href: "/prototipo/espacios", subs: ["Bathrooms", "Kitchens", "Interiors", "Facades", "Contract"] },
-  { label: "Interviews", subs: ["Designers", "Architects", "Artists"] },
+  { label: "Todo" },
+  { label: "Spaces", href: "/prototipo/espacios", subs: ["Bathrooms", "Kitchens", "Interiors", "Facades"] },
+  { label: "Interviews", href: "/prototipo/interviews", subs: ["Designers", "Architects", "Artists"] },
+  { label: "Contract", href: "/prototipo/contract", subs: ["Hotels", "Offices", "Retail", "Public"] },
   { label: "Tendencias", subs: ["Materials", "Color", "Sustainability"] },
   { label: "Reformas", subs: ["Residential", "Commercial", "Outdoor"] },
 ];
+
+const SUB_HREFS: Record<string, string> = {
+  Bathrooms: "/prototipo/espacios/bathrooms",
+  Kitchens: "/prototipo/espacios/kitchens",
+  Interiors: "/prototipo/espacios/interiors",
+};
 
 export default function PrototipoPage() {
   const { navigateTo } = useProtoCurtain();
@@ -23,10 +30,22 @@ export default function PrototipoPage() {
   const [activeFilter, setActiveFilter] = useState(0);
   const [activeSub, setActiveSub] = useState(0);
   const [overHero, setOverHero] = useState(true);
+  const [searchMode, setSearchMode] = useState(false);
+  const [showToast, setShowToast] = useState(false);
   const revealRef = useReveal();
+  const pillRef = useRef<HTMLDivElement>(null);
+  const collapsedLeftRef = useRef<number | null>(null);
+  const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const currentFilter = FILTERS[activeFilter];
   const hasSubs = activeFilter > 0 && currentFilter.subs;
+
+  // Lock the pill's left edge before any state change so items don't shift
+  const lockPill = useCallback(() => {
+    if (pillRef.current) {
+      collapsedLeftRef.current = pillRef.current.getBoundingClientRect().left;
+    }
+  }, []);
 
   useEffect(() => {
     function handleScroll() {
@@ -60,13 +79,17 @@ export default function PrototipoPage() {
         ))}
       </div>
 
-      {/* Hero — full viewport */}
-      <div className="relative w-full h-screen">
+      {/* Hero — full viewport (clickable) */}
+      <div
+        className="relative w-full h-screen cursor-pointer group"
+        onClick={() => navigateTo("/prototipo/articulo/continuidad-y-resistencia")}
+      >
         <img
           src={`${basePath}/images/fondo-journal.png`}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
         />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
         <div className="absolute inset-0 flex items-center justify-center z-10">
           <div className="flex flex-col items-center text-center">
             <p
@@ -184,47 +207,84 @@ export default function PrototipoPage() {
         </div>
       </div>
 
+      {/* Toast — búsqueda no disponible */}
+      {showToast && (
+        <div className="fixed bottom-[90px] left-1/2 -translate-x-1/2 z-50 bg-black/80 backdrop-blur-[12px] text-white text-[13px] px-[20px] py-[8px] rounded-full animate-[fadeSlideIn_300ms_ease] whitespace-nowrap">
+          Búsqueda temporalmente no disponible
+        </div>
+      )}
+
       {/* Bottom floating nav — glass pill (fixed) */}
-      <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">
-        <div
-          className={`flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] text-white text-[14px] font-normal transition-all duration-500 ${
-            overHero ? "bg-black/16" : "bg-black/[0.46]"
-          }`}
-          style={{ lineHeight: "normal" }}
+      <div
+        ref={pillRef}
+        className={`fixed bottom-[32px] z-40 flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] text-white text-[14px] font-normal whitespace-nowrap transition-colors duration-500 ${
+          overHero ? "bg-black/16" : "bg-black/[0.46]"
+        }`}
+        style={{
+          lineHeight: "normal",
+          left: collapsedLeftRef.current !== null ? collapsedLeftRef.current : "50%",
+          transform: collapsedLeftRef.current !== null ? "none" : "translateX(-50%)",
+        }}
+        onMouseLeave={() => {
+          setActiveFilter(0); setActiveSub(0); collapsedLeftRef.current = null;
+          if (searchMode) {
+            searchTimeoutRef.current = setTimeout(() => { setSearchMode(false); }, 5000);
+          }
+        }}
+        onMouseEnter={() => {
+          if (searchTimeoutRef.current) { clearTimeout(searchTimeoutRef.current); searchTimeoutRef.current = null; }
+        }}
+      >
+        <button
+          className="font-medium cursor-pointer"
+          onClick={() => navigateTo("/prototipo")}
+          onMouseEnter={() => { if (hasSubs) { lockPill(); setActiveFilter(0); setActiveSub(0); } }}
         >
-          <span className="font-medium">Journal</span>
+          Journal
+        </button>
 
-          {hasSubs ? (
-            <>
-              <button
-                onClick={() => { setActiveFilter(0); setActiveSub(0); }}
-                className="cursor-pointer transition-opacity duration-300"
-                style={{ opacity: 0.6 }}
-              >
-                Todo
-              </button>
+        {/* Lupa */}
+        <button
+          onClick={() => { lockPill(); setSearchMode(!searchMode); setActiveFilter(0); setActiveSub(0); }}
+          className="cursor-pointer transition-opacity duration-300 opacity-60 hover:opacity-100 shrink-0"
+        >
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="5.5" cy="5.5" r="4.75" stroke="white" strokeWidth="1" />
+            <line x1="9" y1="9" x2="13" y2="13" stroke="white" strokeWidth="1" />
+          </svg>
+        </button>
 
-              <span className="flex items-center gap-[8px]">
-                <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
-                {currentFilter.label}
-              </span>
+        {/* Search mode */}
+        {searchMode && (
+          <>
+            <input
+              type="text"
+              placeholder="¿Qué estás buscando?"
+              className="bg-transparent border-none outline-none text-white text-[14px] placeholder-white/40 w-[240px]"
+              autoFocus
+            />
+            <button
+              className="cursor-pointer text-white/60 hover:text-white transition-colors duration-300 text-[14px] shrink-0"
+              onClick={() => {
+                setSearchMode(false);
+                collapsedLeftRef.current = null;
+                setShowToast(true);
+                setTimeout(() => setShowToast(false), 2500);
+              }}
+            >
+              Buscar
+            </button>
+          </>
+        )}
 
-              <span className="text-white/30">|</span>
-
-              {currentFilter.subs!.map((sub, i) => (
-                <button
-                  key={sub}
-                  onClick={() => setActiveSub(i)}
-                  className="cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: activeSub === i ? 1 : 0.6 }}
-                >
-                  {sub}
-                </button>
-              ))}
-            </>
-          ) : (
-            FILTERS.map((filter, i) => {
+        {/* Filters — hidden in search mode */}
+        {!searchMode && (
+          <>
+            {FILTERS.map((filter, i) => {
+              if (i === 0) return null;
+              if (hasSubs && i > activeFilter) return null;
               const isActive = activeFilter === i;
+              const showDot = hasSubs ? i === activeFilter : isActive;
               return (
                 <button
                   key={filter.label}
@@ -232,22 +292,45 @@ export default function PrototipoPage() {
                     if (filter.href) { navigateTo(filter.href); return; }
                     setActiveFilter(i); setActiveSub(0);
                   }}
+                  onMouseEnter={() => {
+                    if (filter.subs) { lockPill(); setActiveFilter(i); setActiveSub(0); }
+                    else if (hasSubs) { lockPill(); setActiveFilter(0); setActiveSub(0); }
+                  }}
                   className="flex items-center gap-[8px] cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: isActive ? 1 : 0.6 }}
+                  style={{ opacity: showDot ? 1 : 0.6 }}
                 >
                   <span
                     className="block w-[6px] h-[6px] rounded-full bg-white transition-all duration-300 shrink-0"
                     style={{
-                      opacity: isActive ? 1 : 0,
-                      transform: isActive ? "scale(1)" : "scale(0)",
+                      opacity: showDot ? 1 : 0,
+                      transform: showDot ? "scale(1)" : "scale(0)",
                     }}
                   />
                   {filter.label}
                 </button>
               );
-            })
-          )}
-        </div>
+            })}
+
+            {hasSubs && (
+              <>
+                <span className="text-white/30">|</span>
+                {currentFilter.subs?.map((sub, i) => (
+                  <button
+                    key={sub}
+                    onClick={() => {
+                      setActiveSub(i);
+                      if (SUB_HREFS[sub]) navigateTo(SUB_HREFS[sub]);
+                    }}
+                    className="cursor-pointer transition-opacity duration-300"
+                    style={{ opacity: activeSub === i ? 1 : 0.6 }}
+                  >
+                    {sub}
+                  </button>
+                ))}
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );

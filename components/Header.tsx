@@ -41,17 +41,34 @@ export default function Header({ dark }: HeaderProps = {}) {
           />
         </a>
         <div className="hidden lg:flex items-center gap-6">
-          {NAV_LINKS.map((l) => (
-            <span
-              key={l}
-              className={`text-[14px] cursor-pointer transition-colors duration-300 ${
-                isDark ? "text-black" : "text-white"
-              }`}
-              style={{ opacity: 0.6 }}
-            >
-              {l}
-            </span>
-          ))}
+          {NAV_LINKS.map((l) => {
+            if (l === "Inspiración" || l === "Donde Comprar") {
+              const href = l === "Inspiración" ? `${basePath}/prototipo` : `${basePath}/`;
+              return (
+                <a
+                  key={l}
+                  href={href}
+                  className={`text-[14px] cursor-pointer transition-colors duration-300 ${
+                    isDark ? "text-black" : "text-white"
+                  }`}
+                  style={{ opacity: 0.6 }}
+                >
+                  {l}
+                </a>
+              );
+            }
+            return (
+              <span
+                key={l}
+                className={`text-[14px] cursor-pointer transition-colors duration-300 ${
+                  isDark ? "text-black" : "text-white"
+                }`}
+                style={{ opacity: 0.6 }}
+              >
+                {l}
+              </span>
+            );
+          })}
         </div>
         <span
           className={`text-[14px] cursor-pointer transition-colors duration-300 ${

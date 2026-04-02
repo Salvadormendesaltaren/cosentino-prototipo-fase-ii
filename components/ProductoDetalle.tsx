@@ -2,9 +2,11 @@
 
 import { useRef, useEffect, useState } from "react";
 import Header from "@/components/Header";
+import { useProtoCurtain } from "@/app/prototipo/layout";
 import basePath from "@/lib/basePath";
 
 export default function ProductoDetalle() {
+  const { navigateTo } = useProtoCurtain();
   const [headerDark, setHeaderDark] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const fullwidthRef = useRef<HTMLDivElement>(null);
@@ -29,6 +31,19 @@ export default function ProductoDetalle() {
     <div style={{ background: "#F5F5F5" }}>
       <Header dark={headerDark} />
 
+      {/* ═══ VOLVER — fixed sobre hero ═══ */}
+      <div className="absolute top-[66px] left-0 right-0 z-40 px-[32px] pt-[16px]">
+        <button
+          onClick={() => navigateTo("/prototipo/articulo/continuidad-y-resistencia")}
+          className={`text-[14px] font-normal cursor-pointer transition-all duration-300 hover:opacity-70 ${
+            headerDark ? "text-black/50" : "text-white/50"
+          }`}
+          style={{ lineHeight: "22px", letterSpacing: "-0.28px" }}
+        >
+          &larr; Volver
+        </button>
+      </div>
+
       {/* ═══ HERO ═══ */}
       <div
         ref={heroRef}
@@ -48,18 +63,6 @@ export default function ProductoDetalle() {
           </div>
         </div>
       </div>
-
-      {/* ═══ VOLVER ═══ */}
-      <a
-        href={`${basePath}/`}
-        className={`fixed top-[56px] left-6 text-[14px] z-10 transition-colors duration-300 ${
-          headerDark
-            ? "text-black/60 hover:text-black"
-            : "text-white/60 hover:text-white"
-        }`}
-      >
-        Volver
-      </a>
 
       {/* ═══ DESCRIPCIÓN ═══ */}
       <section className="px-6 py-12 flex flex-col items-start gap-6" style={{ background: "#F5F5F5" }}>
