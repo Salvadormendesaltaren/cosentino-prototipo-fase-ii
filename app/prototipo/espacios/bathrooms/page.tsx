@@ -117,7 +117,7 @@ export default function BathroomsPage() {
       )}
 
       {/* Bottom floating nav — glass pill */}
-      <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">
+      <div className="fixed bottom-[20px] left-0 right-0 z-40 flex justify-center">
         <div
           className="flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] bg-black/[0.46] text-white text-[14px] font-normal"
           style={{ lineHeight: "normal" }}

@@ -171,7 +171,7 @@ export default function EncuentraPage() {
       )}
 
       {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item, i) => (
           <button
             key={item}
@@ -182,7 +182,6 @@ export default function EncuentraPage() {
             style={{
               lineHeight: "normal",
               opacity: i === 1 ? 1 : 0.5,
-              textShadow: "0 1px 6px rgba(0,0,0,0.6), 0 0 14px rgba(0,0,0,0.3)",
             }}
           >
             {item}
@@ -191,7 +190,7 @@ export default function EncuentraPage() {
       </div>
 
       {/* Bottom floating nav — glass pill */}
-      <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">
+      <div className="fixed bottom-[20px] left-0 right-0 z-40 flex justify-center">
         <div
           className="flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] bg-black/[0.46] text-white text-[14px] font-normal whitespace-nowrap transition-all duration-500"
           style={{ lineHeight: "normal" }}

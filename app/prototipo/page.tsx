@@ -200,7 +200,7 @@ export default function PrototipoPage() {
       )}
 
       {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item, i) => (
           <button
             key={item}
@@ -221,7 +221,7 @@ export default function PrototipoPage() {
       {/* Bottom floating nav — glass pill (fixed) */}
       <div
         ref={pillRef}
-        className={`fixed bottom-[32px] z-40 flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] text-white text-[14px] font-normal whitespace-nowrap transition-colors duration-500 ${
+        className={`fixed bottom-[20px] z-40 flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] text-white text-[14px] font-normal whitespace-nowrap transition-colors duration-500 ${
           overHero ? "bg-black/16" : "bg-black/[0.46]"
         }`}
         style={{

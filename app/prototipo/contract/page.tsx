@@ -188,7 +188,7 @@ export default function ContractPage() {
       )}
 
       {/* Sub-nav: MAGAZINE / ENCUENTRA */}
-      <div className="fixed bottom-[80px] left-0 right-0 z-40 flex justify-center gap-[16px]">
+      <div className="fixed bottom-[64px] left-0 right-0 z-40 flex justify-center gap-[16px]">
         {SUB_NAV.map((item) => (
           <button
             key={item}
@@ -208,7 +208,7 @@ export default function ContractPage() {
       </div>
 
       {/* Bottom floating nav — glass pill */}
-      <div className="fixed bottom-[32px] left-0 right-0 z-40 flex justify-center">
+      <div className="fixed bottom-[20px] left-0 right-0 z-40 flex justify-center">
         <div
           className={`flex items-center gap-[16px] px-[32px] pt-[12px] pb-[11px] rounded-[72px] backdrop-blur-[36px] text-white text-[14px] font-normal transition-all duration-500 ${
             overHero ? "bg-black/16" : "bg-black/[0.46]"

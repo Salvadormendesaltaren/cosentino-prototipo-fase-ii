@@ -59,6 +59,15 @@ export default function PrototipoLayout({ children }: { children: React.ReactNod
         }}
       />
       {children}
+
+      {/* Bottom gradient overlay for nav contrast */}
+      <div
+        className="fixed bottom-0 left-0 right-0 z-30 pointer-events-none"
+        style={{
+          height: "120px",
+          background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 100%)",
+        }}
+      />
     </ProtoCurtainContext.Provider>
   );
 }
