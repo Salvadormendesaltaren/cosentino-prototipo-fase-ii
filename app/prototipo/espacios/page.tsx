@@ -256,6 +256,7 @@ export default function EspaciosPage() {
                   Bathrooms: "/prototipo/espacios/bathrooms",
                   Kitchens: "/prototipo/espacios/kitchens",
                   Interiors: "/prototipo/espacios/interiors",
+                  Facades: "/prototipo/espacios/facades",
                 };
                 return (
                   <button

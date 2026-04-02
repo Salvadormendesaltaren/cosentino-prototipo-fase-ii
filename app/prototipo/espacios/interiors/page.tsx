@@ -20,6 +20,7 @@ export default function InteriorsPage() {
     Bathrooms: "/prototipo/espacios/bathrooms",
     Kitchens: "/prototipo/espacios/kitchens",
     Interiors: "/prototipo/espacios/interiors",
+    Facades: "/prototipo/espacios/facades",
   };
 
   return (
@@ -113,7 +114,7 @@ export default function InteriorsPage() {
       </div>
 
       {/* 5. Dormitorio — mid, 5 col, derecha */}
-      <div className="grid-container pt-[180px]">
+      <div className="grid-container pt-[180px] pb-[180px]">
         <div className="grid-12">
           <div className="col-start-7 col-span-5 reveal">
             <ArticleThumbnail
@@ -121,146 +122,6 @@ export default function InteriorsPage() {
               article={{
                 image: "/images/spaces-dormitorio.jpg",
                 title: "Texturas suaves, colores vivos",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 6. Boho beige — small, 3 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/interior-boho-beige.jpg",
-                title: "Ratán, mimbre y luz natural",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 7. Salón gris — mid, 5 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-4 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/interior-salon-gris.jpg",
-                title: "Gris urbano, verde interior",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 8. Olivo blanco — big, 7 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-1 col-span-7 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/interior-olivo-blanco.jpg",
-                title: "El olivo como centro de gravedad",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 9. Butaca amarilla — small, 4 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-8 col-span-4 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/interior-butaca-amarilla.jpg",
-                title: "Un acento de color lo cambia todo",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 10. Sofá tropical — mid, 5 col, centro-izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/interior-sofa-tropical.jpg",
-                title: "Trópico doméstico: plantas que habitan",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 11. Nursery — small, 3 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-5 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/interior-nursery.jpg",
-                title: "Primeros sueños bajo las estrellas",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 12. Naranja plants — big, 6 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-6 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/interior-naranja-plants.jpg",
-                title: "Naranja, mostaza y clorofila",
-                category: "Espacios · Interiors",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 13. Cortinas rosa — super, full width */}
-      <div className="pt-[180px] reveal">
-        <ArticleThumbnail
-          variant="super"
-          article={{
-            image: "/images/interior-cortinas-rosa.jpg",
-            title: "Pasillos que cuentan historias",
-            category: "Espacios · Interiors",
-          }}
-        />
-      </div>
-
-      {/* 14. Árbol luz — mid, 5 col, centro-derecha */}
-      <div className="grid-container pt-[180px] pb-[180px]">
-        <div className="grid-12">
-          <div className="col-start-5 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/interior-arbol-luz.jpg",
-                title: "Donde la naturaleza entra sin pedir permiso",
                 category: "Espacios · Interiors",
               }}
             />

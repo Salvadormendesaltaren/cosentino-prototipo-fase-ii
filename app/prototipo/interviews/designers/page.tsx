@@ -6,22 +6,15 @@ import ArticleThumbnail from "@/components/ArticleThumbnail";
 import { useReveal } from "@/hooks/useReveal";
 import { useProtoCurtain } from "../../layout";
 
-const SUBS = ["Bathrooms", "Kitchens", "Interiors", "Facades"];
+const SUBS = ["Designers", "Architects", "Artists"];
 
-export default function KitchensPage() {
+export default function DesignersPage() {
   const { navigateTo } = useProtoCurtain();
-  const [activeSub, setActiveSub] = useState(1);
+  const [activeSub, setActiveSub] = useState(0);
   const [searchMode, setSearchMode] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const revealRef = useReveal();
-
-  const subHrefs: Record<string, string> = {
-    Bathrooms: "/prototipo/espacios/bathrooms",
-    Kitchens: "/prototipo/espacios/kitchens",
-    Interiors: "/prototipo/espacios/interiors",
-    Facades: "/prototipo/espacios/facades",
-  };
 
   return (
     <div className="relative w-full min-h-screen bg-white" ref={revealRef}>
@@ -41,98 +34,101 @@ export default function KitchensPage() {
           <span
             className="cursor-pointer transition-opacity hover:opacity-70"
             style={{ color: "rgba(0, 0, 0, 0.50)" }}
-            onClick={() => navigateTo("/prototipo/espacios")}
+            onClick={() => navigateTo("/prototipo/interviews")}
           >
-            Espacios
+            Interviews
           </span>
           <span style={{ color: "rgba(0, 0, 0, 0.50)" }}> · </span>
-          <span className="text-black font-medium">Kitchens</span>
+          <span className="text-black font-medium">Designers</span>
         </p>
       </div>
 
-      {/* 1. Cocina terrazzo — mid, 5 col, centro-izquierda */}
+      {/* 1. Trazos que construyen mundos — mid, 5 col */}
       <div className="pt-[120px]" />
       <div className="grid-container">
         <div className="grid-12">
-          <div className="col-start-4 col-span-5 reveal">
+          <div className="col-start-5 col-span-5 reveal">
             <ArticleThumbnail
               variant="mid"
               article={{
-                image: "/images/spaces-cocina-terrazzo.jpg",
-                title: "Terrazzo y madera: la cocina eterna",
-                category: "Espacios · Kitchens",
+                image: "/images/interview-bocetos.jpg",
+                title: "Trazos que construyen mundos: Ivan Herrera",
+                category: "Entrevistas · Designers",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 2. Cocina orgánica — small, 3 col, centro-derecha */}
+      {/* 2. La mirada joven — small, 3 col */}
       <div className="grid-container pt-[180px]">
         <div className="grid-12">
-          <div className="col-start-7 col-span-3 reveal">
+          <div className="col-start-3 col-span-3 reveal">
             <ArticleThumbnail
               variant="small"
               article={{
-                image: "/images/espacios-ninos.png",
-                title: "Un juego de niños: La cocina orgánica",
-                category: "Espacios · Kitchens",
+                image: "/images/interview-designer-darshan.jpg",
+                title: "La mirada joven: Liang Chen",
+                category: "Entrevistas · Designers",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 3. En piedra — small, 4 col, izquierda */}
+      {/* 3. Color, textura, identidad — big, 6 col */}
       <div className="grid-container pt-[180px]">
         <div className="grid-12">
-          <div className="col-start-2 col-span-4 reveal">
+          <div className="col-start-4 col-span-6 reveal">
             <ArticleThumbnail
-              variant="small"
+              variant="big"
               article={{
-                image: "/images/espacios-enpiedra.png",
-                title: "En piedra",
-                category: "Espacios · Kitchens",
+                image: "/images/interview-designer-prince.jpg",
+                title: "Color, textura, identidad: Amara Diallo",
+                category: "Entrevistas · Designers",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 4. Cocina hero — super, full width */}
+      {/* 4. Disenar es sonreir — super, full width */}
       <div className="pt-[180px] reveal">
         <ArticleThumbnail
           variant="super"
           article={{
-            image: "/images/cocina.png",
-            title: "Una cocina para cocinar",
-            category: "Espacios · Kitchens",
+            image: "/images/interview-designer-jack.jpg",
+            title: "Disenar es sonreir",
+            category: "Entrevistas · Designers",
           }}
           href="/prototipo/articulo/continuidad-y-resistencia"
           onNavigate={navigateTo}
         />
       </div>
 
-      {/* 5. Terrazzo — small, 3 col, centro */}
-      <div className="grid-container pt-[180px] pb-[180px]">
+      {/* 5. Entre Oriente y Occidente — small, 4 col */}
+      <div className="grid-container pt-[180px]">
         <div className="grid-12">
-          <div className="col-start-5 col-span-3 reveal">
+          <div className="col-start-6 col-span-4 reveal">
             <ArticleThumbnail
               variant="small"
               article={{
-                image: "/images/spaces-cocina-terrazzo.jpg",
-                title: "El nuevo salpicadero: texturas naturales",
-                category: "Espacios · Kitchens",
+                image: "/images/interview-designer-panitan.jpg",
+                title: "Entre Oriente y Occidente: Yuki Tanaka",
+                category: "Entrevistas · Designers",
               }}
             />
           </div>
         </div>
       </div>
 
+      {/* Spacer final */}
+      <div className="pb-[180px]" />
+
       {/* Toast */}
       {showToast && (
         <div className="fixed bottom-[90px] left-1/2 -translate-x-1/2 z-50 bg-black/80 backdrop-blur-[12px] text-white text-[13px] px-[20px] py-[8px] rounded-full animate-[fadeSlideIn_300ms_ease] whitespace-nowrap">
-          Búsqueda temporalmente no disponible
+          Busqueda temporalmente no disponible
         </div>
       )}
 
@@ -163,7 +159,7 @@ export default function KitchensPage() {
             <>
               <input
                 type="text"
-                placeholder="¿Qué estás buscando?"
+                placeholder="Que estas buscando?"
                 className="bg-transparent border-none outline-none text-white text-[14px] placeholder-white/40 w-[240px]"
                 autoFocus
               />
@@ -177,35 +173,42 @@ export default function KitchensPage() {
           ) : (
             <>
               <button
-                onClick={() => navigateTo("/prototipo/espacios")}
+                onClick={() => navigateTo("/prototipo/interviews")}
                 className="cursor-pointer transition-opacity duration-300"
                 style={{ opacity: 0.6 }}
               >
-                Spaces
+                Interviews
               </button>
 
               <span className="text-white/30">|</span>
 
-              {SUBS.map((sub, i) => (
-                <button
-                  key={sub}
-                  onClick={() => {
-                    setActiveSub(i);
-                    if (subHrefs[sub] && sub !== "Kitchens") navigateTo(subHrefs[sub]);
-                  }}
-                  className="cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: activeSub === i ? 1 : 0.6 }}
-                >
-                  {sub === "Kitchens" ? (
-                    <span className="flex items-center gap-[8px]">
-                      <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
-                      {sub}
-                    </span>
-                  ) : (
-                    sub
-                  )}
-                </button>
-              ))}
+              {SUBS.map((sub, i) => {
+                const subHrefs: Record<string, string> = {
+                  Designers: "/prototipo/interviews/designers",
+                  Architects: "/prototipo/interviews/architects",
+                  Artists: "/prototipo/interviews/artists",
+                };
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => {
+                      setActiveSub(i);
+                      if (subHrefs[sub] && sub !== "Designers") navigateTo(subHrefs[sub]);
+                    }}
+                    className="cursor-pointer transition-opacity duration-300"
+                    style={{ opacity: activeSub === i ? 1 : 0.6 }}
+                  >
+                    {sub === "Designers" ? (
+                      <span className="flex items-center gap-[8px]">
+                        <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
+                        {sub}
+                      </span>
+                    ) : (
+                      sub
+                    )}
+                  </button>
+                );
+              })}
             </>
           )}
         </div>

@@ -180,7 +180,7 @@ export default function ContractPage() {
       </div>
 
       {/* 6. Naranja — mid, 5 col, derecha */}
-      <div className="grid-container pt-[180px]">
+      <div className="grid-container pt-[180px] pb-[180px]">
         <div className="grid-12">
           <div className="col-start-7 col-span-5 reveal">
             <ArticleThumbnail
@@ -189,308 +189,6 @@ export default function ContractPage() {
                 image: "/images/contract-naranja.jpg",
                 title: "Hotel Solaris: color y estructura",
                 category: "Contract · Hotels",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 7. Vidrio oficinas — big, 6 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-vidrio-oficinas.jpg",
-                title: "Crepúsculo corporativo: luz tras el cristal",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 8. Galería cerámica — small, 3 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-8 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-galeria-ceramica.jpg",
-                title: "Arcos y cerámica: galería silenciosa",
-                category: "Contract · Retail",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 9. Atrio lucernario — mid, 5 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-4 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/contract-atrio-lucernario.jpg",
-                title: "Lucernario rojo: atrio entre luces",
-                category: "Contract · Public",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 10. Brutalismo — super, full width */}
-      <div className="pt-[180px] reveal">
-        <ArticleThumbnail
-          variant="super"
-          article={{
-            image: "/images/contract-brutalismo.jpg",
-            label: "Contract",
-            title: "Brutalismo puro",
-            category: "Public",
-          }}
-          href="/prototipo/articulo/continuidad-y-resistencia"
-          onNavigate={navigateTo}
-        />
-      </div>
-
-      {/* 11. Museo piedra — big, 6 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-6 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-museo-piedra.jpg",
-                title: "Piedra y cenital: el museo como cueva",
-                category: "Contract · Public",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 12. Fachada piedra — small, 3 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-fachada-piedra.jpg",
-                title: "Textura mineral: paneles que respiran",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 13. Curvas plata — mid, 5 col, centro-derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-5 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/contract-curvas-plata.jpg",
-                title: "Pliegues de plata: arquitectura líquida",
-                category: "Contract · Public",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 14. Oficinas piedra — small, 3 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-9 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-oficinas-piedra.jpg",
-                title: "Arenisca viva: sedes que perduran",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 15. Escalera ladrillo — big, 6 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-1 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-escalera-ladrillo.jpg",
-                title: "Espiral de ladrillo: ascender hacia la luz",
-                category: "Contract · Hotels",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 16. Hotel cabaña — mid, 5 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-4 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/contract-hotel-cabana.jpg",
-                title: "Refugio elevado: hospitalidad entre copas",
-                category: "Contract · Hotels",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 17. Corredor mármol — super, full width */}
-      <div className="pt-[180px] reveal">
-        <ArticleThumbnail
-          variant="super"
-          article={{
-            image: "/images/contract-corredor-marmol.jpg",
-            label: "Contract",
-            title: "Mármol dramático",
-            category: "Hotels",
-          }}
-          href="/prototipo/articulo/continuidad-y-resistencia"
-          onNavigate={navigateTo}
-        />
-      </div>
-
-      {/* 18. Fachada blanca — small, 3 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-5 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-fachada-blanca.jpg",
-                title: "Ventanas al azar: ritmo en blanco",
-                category: "Contract · Retail",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 19. Mediterráneo — big, 6 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-6 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-mediterraneo.jpg",
-                title: "Blanco mediterráneo: cal y cielo",
-                category: "Contract · Hotels",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 20. Paneles blancos — mid, 5 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/contract-paneles-blancos.jpg",
-                title: "Abstracción blanca: fachada como lienzo",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 21. Reflejo cristal — small, 3 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-8 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-reflejo-cristal.jpg",
-                title: "Geometría reflejada: el cielo dentro",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 22. Bloque blanco — big, 6 col, centro */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-4 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-bloque-blanco.jpg",
-                title: "Residencia mínima: volumen y vacío",
-                category: "Contract · Hotels",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 23. Ventanas oficina — small, 3 col, izquierda */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/contract-ventanas-oficina.jpg",
-                title: "Repetición infinita: módulo de oficina",
-                category: "Contract · Offices",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 24. Metálico — mid, 5 col, centro-derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-6 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/contract-metalico.jpg",
-                title: "Piel metálica: lo industrial hecho elegante",
-                category: "Contract · Retail",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 25. Damero — big, 6 col, izquierda */}
-      <div className="grid-container pt-[180px] pb-[180px]">
-        <div className="grid-12">
-          <div className="col-start-1 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/contract-damero.jpg",
-                title: "Tablero urbano: blanco y negro sin concesiones",
-                category: "Contract · Public",
               }}
             />
           </div>
@@ -553,16 +251,24 @@ export default function ContractPage() {
 
               <span className="text-white/30">|</span>
 
-              {SUBS.map((sub, i) => (
-                <button
-                  key={sub}
-                  onClick={() => setActiveSub(i)}
-                  className="cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: activeSub === i ? 1 : 0.6 }}
-                >
-                  {sub}
-                </button>
-              ))}
+              {SUBS.map((sub, i) => {
+                const subHrefs: Record<string, string> = {
+                  Hotels: "/prototipo/contract/hotels",
+                  Offices: "/prototipo/contract/offices",
+                  Retail: "/prototipo/contract/retail",
+                  Public: "/prototipo/contract/public",
+                };
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => { setActiveSub(i); if (subHrefs[sub]) navigateTo(subHrefs[sub]); }}
+                    className="cursor-pointer transition-opacity duration-300"
+                    style={{ opacity: activeSub === i ? 1 : 0.6 }}
+                  >
+                    {sub}
+                  </button>
+                );
+              })}
             </>
           )}
         </div>

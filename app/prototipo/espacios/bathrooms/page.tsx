@@ -171,6 +171,7 @@ export default function BathroomsPage() {
                   Bathrooms: "/prototipo/espacios/bathrooms",
                   Kitchens: "/prototipo/espacios/kitchens",
                   Interiors: "/prototipo/espacios/interiors",
+                  Facades: "/prototipo/espacios/facades",
                 };
                 return (
                   <button

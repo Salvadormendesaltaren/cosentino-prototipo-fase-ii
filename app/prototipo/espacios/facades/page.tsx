@@ -8,20 +8,13 @@ import { useProtoCurtain } from "../../layout";
 
 const SUBS = ["Bathrooms", "Kitchens", "Interiors", "Facades"];
 
-export default function KitchensPage() {
+export default function FacadesPage() {
   const { navigateTo } = useProtoCurtain();
-  const [activeSub, setActiveSub] = useState(1);
+  const [activeSub, setActiveSub] = useState(3);
   const [searchMode, setSearchMode] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const revealRef = useReveal();
-
-  const subHrefs: Record<string, string> = {
-    Bathrooms: "/prototipo/espacios/bathrooms",
-    Kitchens: "/prototipo/espacios/kitchens",
-    Interiors: "/prototipo/espacios/interiors",
-    Facades: "/prototipo/espacios/facades",
-  };
 
   return (
     <div className="relative w-full min-h-screen bg-white" ref={revealRef}>
@@ -46,11 +39,11 @@ export default function KitchensPage() {
             Espacios
           </span>
           <span style={{ color: "rgba(0, 0, 0, 0.50)" }}> · </span>
-          <span className="text-black font-medium">Kitchens</span>
+          <span className="text-black font-medium">Facades</span>
         </p>
       </div>
 
-      {/* 1. Cocina terrazzo — mid, 5 col, centro-izquierda */}
+      {/* 1. Ritmo de ventanas — mid, 5 col, col-start-4 */}
       <div className="pt-[120px]" />
       <div className="grid-container">
         <div className="grid-12">
@@ -58,76 +51,79 @@ export default function KitchensPage() {
             <ArticleThumbnail
               variant="mid"
               article={{
-                image: "/images/spaces-cocina-terrazzo.jpg",
-                title: "Terrazzo y madera: la cocina eterna",
-                category: "Espacios · Kitchens",
+                image: "/images/contract-fachada-blanca.jpg",
+                title: "Ritmo de ventanas: la fachada que respira",
+                category: "Espacios · Facades",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 2. Cocina orgánica — small, 3 col, centro-derecha */}
+      {/* 2. Paneles en movimiento — small, 3 col, col-start-7 */}
       <div className="grid-container pt-[180px]">
         <div className="grid-12">
           <div className="col-start-7 col-span-3 reveal">
             <ArticleThumbnail
               variant="small"
               article={{
-                image: "/images/espacios-ninos.png",
-                title: "Un juego de niños: La cocina orgánica",
-                category: "Espacios · Kitchens",
+                image: "/images/contract-paneles-blancos.jpg",
+                title: "Paneles en movimiento",
+                category: "Espacios · Facades",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 3. En piedra — small, 4 col, izquierda */}
+      {/* 3. Piedra texturada — big, 6 col, col-start-2 */}
       <div className="grid-container pt-[180px]">
         <div className="grid-12">
-          <div className="col-start-2 col-span-4 reveal">
+          <div className="col-start-2 col-span-6 reveal">
             <ArticleThumbnail
-              variant="small"
+              variant="big"
               article={{
-                image: "/images/espacios-enpiedra.png",
-                title: "En piedra",
-                category: "Espacios · Kitchens",
+                image: "/images/contract-fachada-piedra.jpg",
+                title: "Piedra texturada: entre lo natural y lo construido",
+                category: "Espacios · Facades",
               }}
             />
           </div>
         </div>
       </div>
 
-      {/* 4. Cocina hero — super, full width */}
+      {/* 4. Hero — Damero urbano — super, full width */}
       <div className="pt-[180px] reveal">
         <ArticleThumbnail
           variant="super"
           article={{
-            image: "/images/cocina.png",
-            title: "Una cocina para cocinar",
-            category: "Espacios · Kitchens",
+            image: "/images/contract-damero.jpg",
+            title: "Damero urbano",
+            category: "Espacios · Facades",
           }}
           href="/prototipo/articulo/continuidad-y-resistencia"
           onNavigate={navigateTo}
         />
       </div>
 
-      {/* 5. Terrazzo — small, 3 col, centro */}
-      <div className="grid-container pt-[180px] pb-[180px]">
+      {/* 5. Blanco mediterráneo — small, 3 col, col-start-5 */}
+      <div className="grid-container pt-[180px]">
         <div className="grid-12">
           <div className="col-start-5 col-span-3 reveal">
             <ArticleThumbnail
               variant="small"
               article={{
-                image: "/images/spaces-cocina-terrazzo.jpg",
-                title: "El nuevo salpicadero: texturas naturales",
-                category: "Espacios · Kitchens",
+                image: "/images/contract-mediterraneo.jpg",
+                title: "Blanco mediterráneo: donde el sol es material",
+                category: "Espacios · Facades",
               }}
             />
           </div>
         </div>
       </div>
+
+      {/* Spacer final */}
+      <div className="pb-[180px]" />
 
       {/* Toast */}
       {showToast && (
@@ -186,26 +182,34 @@ export default function KitchensPage() {
 
               <span className="text-white/30">|</span>
 
-              {SUBS.map((sub, i) => (
-                <button
-                  key={sub}
-                  onClick={() => {
-                    setActiveSub(i);
-                    if (subHrefs[sub] && sub !== "Kitchens") navigateTo(subHrefs[sub]);
-                  }}
-                  className="cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: activeSub === i ? 1 : 0.6 }}
-                >
-                  {sub === "Kitchens" ? (
-                    <span className="flex items-center gap-[8px]">
-                      <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
-                      {sub}
-                    </span>
-                  ) : (
-                    sub
-                  )}
-                </button>
-              ))}
+              {SUBS.map((sub, i) => {
+                const subHrefs: Record<string, string> = {
+                  Bathrooms: "/prototipo/espacios/bathrooms",
+                  Kitchens: "/prototipo/espacios/kitchens",
+                  Interiors: "/prototipo/espacios/interiors",
+                  Facades: "/prototipo/espacios/facades",
+                };
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => {
+                      setActiveSub(i);
+                      if (subHrefs[sub] && sub !== "Facades") navigateTo(subHrefs[sub]);
+                    }}
+                    className="cursor-pointer transition-opacity duration-300"
+                    style={{ opacity: activeSub === i ? 1 : 0.6 }}
+                  >
+                    {sub === "Facades" ? (
+                      <span className="flex items-center gap-[8px]">
+                        <span className="block w-[6px] h-[6px] rounded-full bg-white shrink-0" />
+                        {sub}
+                      </span>
+                    ) : (
+                      sub
+                    )}
+                  </button>
+                );
+              })}
             </>
           )}
         </div>

@@ -164,7 +164,7 @@ export default function InterviewsPage() {
       </div>
 
       {/* 5. Sofa — small, 3 col, izquierda */}
-      <div className="grid-container pt-[180px]">
+      <div className="grid-container pt-[180px] pb-[180px]">
         <div className="grid-12">
           <div className="col-start-3 col-span-3 reveal">
             <ArticleThumbnail
@@ -172,54 +172,6 @@ export default function InterviewsPage() {
               article={{
                 image: "/images/interview-sofa.jpg",
                 title: "Tejer el hogar: artesanía y confort",
-                category: "Entrevistas · Artists",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 6. Bocetos — mid, 5 col, derecha */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-6 col-span-5 reveal">
-            <ArticleThumbnail
-              variant="mid"
-              article={{
-                image: "/images/interview-bocetos.jpg",
-                title: "Trazos que construyen mundos: Iván Herrera",
-                category: "Entrevistas · Designers",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 7. Arquitecto — big, 6 col, centrado */}
-      <div className="grid-container pt-[180px]">
-        <div className="grid-12">
-          <div className="col-start-4 col-span-6 reveal">
-            <ArticleThumbnail
-              variant="big"
-              article={{
-                image: "/images/interview-arquitecto.jpg",
-                title: "Entre bosques y planos: la mirada de Laura Vidal",
-                category: "Entrevistas · Architects",
-              }}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* 8. Artistas — small, 3 col, centro-izquierda */}
-      <div className="grid-container pt-[180px] pb-[180px]">
-        <div className="grid-12">
-          <div className="col-start-2 col-span-3 reveal">
-            <ArticleThumbnail
-              variant="small"
-              article={{
-                image: "/images/interview-artistas.jpg",
-                title: "Generación estudio: crear sin fronteras",
                 category: "Entrevistas · Artists",
               }}
             />
@@ -283,16 +235,23 @@ export default function InterviewsPage() {
 
               <span className="text-white/30">|</span>
 
-              {SUBS.map((sub, i) => (
-                <button
-                  key={sub}
-                  onClick={() => setActiveSub(i)}
-                  className="cursor-pointer transition-opacity duration-300"
-                  style={{ opacity: activeSub === i ? 1 : 0.6 }}
-                >
-                  {sub}
-                </button>
-              ))}
+              {SUBS.map((sub, i) => {
+                const subHrefs: Record<string, string> = {
+                  Designers: "/prototipo/interviews/designers",
+                  Architects: "/prototipo/interviews/architects",
+                  Artists: "/prototipo/interviews/artists",
+                };
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => { setActiveSub(i); if (subHrefs[sub]) navigateTo(subHrefs[sub]); }}
+                    className="cursor-pointer transition-opacity duration-300"
+                    style={{ opacity: activeSub === i ? 1 : 0.6 }}
+                  >
+                    {sub}
+                  </button>
+                );
+              })}
             </>
           )}
         </div>
