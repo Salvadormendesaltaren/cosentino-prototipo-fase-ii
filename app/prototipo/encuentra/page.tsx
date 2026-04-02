@@ -103,7 +103,7 @@ const FILTER_BUTTONS: { key: FilterKey; label: string }[] = [
 /* ─── Lists ─────────────────────────────────────────────────── */
 interface SavedList { id: string; name: string; items: string[]; updatedAt: number; }
 type SidebarView = "lists" | "save-item" | "create";
-type ListViewMode = "grid" | "journal";
+type ListViewMode = "grid" | "magazine";
 
 function timeAgo(ts: number): string {
   const mins = Math.floor((Date.now() - ts) / 60000);
@@ -428,52 +428,81 @@ export default function EncuentraPage() {
     );
   }
 
-  /* ── Journal layout ────────────────────────────────────────── */
-  function renderJournal(items: MasonryItem[]) {
-    const blocks: React.ReactNode[] = [];
-    let i = 0;
-    while (i < items.length) {
-      const hero = items[i];
-      blocks.push(
-        <div key={`hero-${hero.image}`} className="relative w-full aspect-[16/9] rounded-[8px] overflow-hidden group cursor-pointer" onClick={() => { if (hero.href) navigateTo(hero.href); }}>
-          <Image src={`${basePath}${hero.image}`} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-[32px] md:p-[48px]">
-            <h2 className="text-white text-[24px] md:text-[32px] font-semibold" style={{ letterSpacing: "-0.5px", lineHeight: 1.15 }}>{hero.title}</h2>
+  /* ── Magazine layout ────────────────────────────────────────── */
+  /* Card variants matching the Magazine page exactly */
+  function MagSuper({ item }: { item: MasonryItem }) {
+    return (
+      <div
+        style={{ marginLeft: "calc(-50vw + 50%)", marginRight: "calc(-50vw + 50%)", width: "100vw" }}
+        className="relative h-screen overflow-hidden cursor-pointer group"
+        onClick={() => { if (item.href) navigateTo(item.href); }}
+      >
+        <Image src={`${basePath}${item.image}`} alt="" fill className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]" />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
+        <div className="absolute inset-0 flex items-center justify-center z-10">
+          <div className="flex flex-col items-center text-center px-[24px]">
+            <p className="text-white text-[14px] font-normal" style={{ lineHeight: "22px", opacity: 0.8 }}>{item.brand}</p>
+            <h2 className="mt-[8px] text-white text-[36px] md:text-[56px] font-medium" style={{ lineHeight: "normal" }}>{item.title}</h2>
+            <p className="mt-[8px] text-white text-[14px] font-normal" style={{ lineHeight: "22px", opacity: 0.8 }}>{item.application}</p>
           </div>
-        </div>,
-      );
-      i++;
-      // Two columns
-      if (i < items.length) {
-        const pair = items.slice(i, i + 2);
+        </div>
+      </div>
+    );
+  }
+
+  function MagCard({ item, className }: { item: MasonryItem; className?: string }) {
+    return (
+      <div className={`cursor-pointer group ${className ?? ""}`} onClick={() => { if (item.href) navigateTo(item.href); }}>
+        <div className="w-full overflow-hidden" style={{ aspectRatio: "672 / 872" }}>
+          <Image src={`${basePath}${item.image}`} alt="" width={672} height={872} className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]" />
+        </div>
+        <h3 className="mt-[12px] text-black text-[16px] font-normal transition-opacity duration-300 group-hover:opacity-60" style={{ lineHeight: "normal", letterSpacing: "-0.64px" }}>{item.title}</h3>
+        <p className="mt-[4px] text-[14px] font-normal transition-opacity duration-300" style={{ color: "rgba(0,0,0,0.50)", lineHeight: "22px", letterSpacing: "-0.28px" }}>{item.brand} · {item.application}</p>
+      </div>
+    );
+  }
+
+  /*
+    Magazine layout sequence (repeats every 7 items):
+    0 → super (full-width hero)
+    1 → mid   (col-start-4 col-span-5)
+    2 → small (col-start-7 col-span-3)
+    3 → super (full-width hero)
+    4 → big   (col-start-4 col-span-6)
+    5 → small (col-start-3 col-span-3)
+    6 → mid   (col-start-7 col-span-5)
+  */
+  function renderMagazine(items: MasonryItem[]) {
+    const blocks: React.ReactNode[] = [];
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const pos = i % 7;
+
+      if (pos === 0 || pos === 3) {
+        // Super — full viewport hero
+        blocks.push(<div key={`s-${i}`} className="pt-[120px] md:pt-[180px] reveal"><MagSuper item={item} /></div>);
+      } else {
+        // Card variant with grid placement
+        let colClass = "";
+        switch (pos) {
+          case 1: colClass = "md:col-start-4 md:col-span-5 col-span-4"; break;   // mid, center-left
+          case 2: colClass = "md:col-start-7 md:col-span-3 col-span-4"; break;   // small, right
+          case 4: colClass = "md:col-start-4 md:col-span-6 col-span-4"; break;   // big, centered
+          case 5: colClass = "md:col-start-3 md:col-span-3 col-span-4"; break;   // small, left
+          case 6: colClass = "md:col-start-7 md:col-span-5 col-span-4"; break;   // mid, right
+        }
         blocks.push(
-          <div key={`pair-${i}`} className="grid grid-cols-2 gap-[20px]">
-            {pair.map((it) => (
-              <div key={it.image} className="flex flex-col gap-[12px] group cursor-pointer" onClick={() => { if (it.href) navigateTo(it.href); }}>
-                <div className="aspect-[4/3] rounded-[8px] overflow-hidden"><Image src={`${basePath}${it.image}`} alt="" width={600} height={450} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]" /></div>
-                <h3 className="text-[16px] font-medium tracking-tight text-black/80">{it.title}</h3>
+          <div key={`c-${i}`} className="pt-[120px] md:pt-[180px]">
+            <div className="grid-12">
+              <div className={`${colClass} reveal`}>
+                <MagCard item={item} />
               </div>
-            ))}
-          </div>,
-        );
-        i += pair.length;
-      }
-      // Wide panoramic
-      if (i < items.length) {
-        const wide = items[i];
-        blocks.push(
-          <div key={`wide-${wide.image}`} className="relative w-full aspect-[21/9] rounded-[8px] overflow-hidden group cursor-pointer" onClick={() => { if (wide.href) navigateTo(wide.href); }}>
-            <Image src={`${basePath}${wide.image}`} alt="" fill className="object-cover transition-transform duration-700 group-hover:scale-[1.02]" />
-            <div className="absolute inset-0 bg-black/25 flex items-center justify-center">
-              <h2 className="text-white text-[20px] md:text-[26px] font-medium text-center max-w-[600px] px-[20px]" style={{ letterSpacing: "-0.3px", lineHeight: 1.2 }}>{wide.title}</h2>
             </div>
           </div>,
         );
-        i++;
       }
     }
-    return <div className="flex flex-col gap-[32px]">{blocks}</div>;
+    return <div>{blocks}</div>;
   }
 
   /* ── Bookmark button (reusable) ────────────────────────────── */
@@ -508,10 +537,10 @@ export default function EncuentraPage() {
                 <span className="text-[12px] text-black/30">{viewedList.items.length} proyecto{viewedList.items.length !== 1 ? "s" : ""}</span>
               </div>
               <div className="flex items-center gap-[14px]">
-                {/* Grid / Journal toggle */}
+                {/* Grid / Magazine toggle */}
                 <div className="flex rounded-full bg-black/[0.06] p-[3px]">
                   <button type="button" onClick={() => setListViewMode("grid")} className={`px-[14px] py-[5px] rounded-full text-[12px] transition-all duration-200 cursor-pointer ${listViewMode === "grid" ? "bg-white text-black shadow-sm font-medium" : "text-black/45"}`}>Grid</button>
-                  <button type="button" onClick={() => setListViewMode("journal")} className={`px-[14px] py-[5px] rounded-full text-[12px] transition-all duration-200 cursor-pointer ${listViewMode === "journal" ? "bg-white text-black shadow-sm font-medium" : "text-black/45"}`}>Journal</button>
+                  <button type="button" onClick={() => setListViewMode("magazine")} className={`px-[14px] py-[5px] rounded-full text-[12px] transition-all duration-200 cursor-pointer ${listViewMode === "magazine" ? "bg-white text-black shadow-sm font-medium" : "text-black/45"}`}>Magazine</button>
                 </div>
                 {/* Share */}
                 <button type="button" onClick={handleShareList} className="flex items-center gap-[6px] text-[12px] text-black/40 hover:text-black transition-colors cursor-pointer">
@@ -524,8 +553,8 @@ export default function EncuentraPage() {
             {/* Content */}
             {viewedItems.length === 0 ? (
               <p className="text-[14px] text-black/40 py-[40px] text-center">Esta lista está vacía</p>
-            ) : listViewMode === "journal" ? (
-              renderJournal(viewedItems)
+            ) : listViewMode === "magazine" ? (
+              renderMagazine(viewedItems)
             ) : (
               <div className="masonry-grid">
                 {viewedItems.map((item, i) => {
