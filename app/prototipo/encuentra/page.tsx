@@ -116,7 +116,7 @@ export default function EncuentraPage() {
   }, [activeFilter, revealRef]);
 
   return (
-    <div className="relative w-full min-h-screen bg-[#f5f5f5]" ref={revealRef}>
+    <div className="relative w-full min-h-screen bg-white" ref={revealRef}>
       {/* Header */}
       <Header dark />
 
