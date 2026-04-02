@@ -178,7 +178,7 @@ export default function EncuentraPage() {
             onClick={() => {
               if (item === "MAGAZINE") navigateTo("/prototipo");
             }}
-            className="text-black/70 text-[13px] font-normal cursor-pointer transition-opacity duration-300"
+            className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
             style={{
               lineHeight: "normal",
               opacity: i === 1 ? 1 : 0.4,
