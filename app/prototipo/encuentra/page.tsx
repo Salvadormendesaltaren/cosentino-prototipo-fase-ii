@@ -463,36 +463,27 @@ export default function EncuentraPage() {
   }
 
   /*
-    Magazine layout sequence (repeats every 7 items):
-    0 → super (full-width hero)
-    1 → mid   (col-start-4 col-span-5)
-    2 → small (col-start-7 col-span-3)
-    3 → super (full-width hero)
-    4 → big   (col-start-4 col-span-6)
-    5 → small (col-start-3 col-span-3)
-    6 → mid   (col-start-7 col-span-5)
+    Magazine layout sequence (repeats every 5 cards, no hero):
+    0 → mid   (col-start-4 col-span-5)
+    1 → small (col-start-7 col-span-3)
+    2 → big   (col-start-4 col-span-6)
+    3 → small (col-start-3 col-span-3)
+    4 → mid   (col-start-7 col-span-5)
   */
   function renderMagazine(items: MasonryItem[]) {
+    const SEQUENCE = [
+      "md:col-start-4 md:col-span-5 col-span-4",  // mid, center-left
+      "md:col-start-7 md:col-span-3 col-span-4",  // small, right
+      "md:col-start-4 md:col-span-6 col-span-4",  // big, centered
+      "md:col-start-3 md:col-span-3 col-span-4",  // small, left
+      "md:col-start-7 md:col-span-5 col-span-4",  // mid, right
+    ];
     const blocks: React.ReactNode[] = [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-      const pos = i % 7;
-
-      if (pos === 0 || pos === 3) {
-        // Super — full viewport hero
-        blocks.push(<div key={`s-${i}`} className="pt-[120px] md:pt-[180px] reveal"><MagSuper item={item} /></div>);
-      } else {
-        // Card variant with grid placement
-        let colClass = "";
-        switch (pos) {
-          case 1: colClass = "md:col-start-4 md:col-span-5 col-span-4"; break;   // mid, center-left
-          case 2: colClass = "md:col-start-7 md:col-span-3 col-span-4"; break;   // small, right
-          case 4: colClass = "md:col-start-4 md:col-span-6 col-span-4"; break;   // big, centered
-          case 5: colClass = "md:col-start-3 md:col-span-3 col-span-4"; break;   // small, left
-          case 6: colClass = "md:col-start-7 md:col-span-5 col-span-4"; break;   // mid, right
-        }
-        blocks.push(
-          <div key={`c-${i}`} className="pt-[120px] md:pt-[180px]">
+      const colClass = SEQUENCE[i % SEQUENCE.length];
+      blocks.push(
+          <div key={`c-${i}`} className={i === 0 ? "" : "pt-[120px] md:pt-[180px]"}>
             <div className="grid-12">
               <div className={`${colClass} reveal`}>
                 <MagCard item={item} />
@@ -501,7 +492,6 @@ export default function EncuentraPage() {
           </div>,
         );
       }
-    }
     return <div>{blocks}</div>;
   }
 
