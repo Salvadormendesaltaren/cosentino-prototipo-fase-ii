@@ -196,7 +196,7 @@ export default function ContractPage() {
               if (item === "MAGAZINE") navigateTo("/prototipo");
               else if (item === "ENCUENTRA") navigateTo("/prototipo/encuentra");
             }}
-            className="text-white text-[13px] font-normal cursor-pointer transition-opacity duration-300"
+            className={`text-[13px] font-normal cursor-pointer transition-all duration-300 ${overHero ? "text-white" : "text-black"}`}
             style={{
               lineHeight: "normal",
               opacity: 0.4,
