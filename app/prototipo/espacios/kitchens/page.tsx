@@ -113,7 +113,7 @@ export default function KitchensPage() {
       </div>
 
       {/* 5. Terrazzo — small, 3 col, centro */}
-      <div className="grid-container pt-[180px] pb-[180px]">
+      <div className="grid-container pt-[180px]">
         <div className="grid-12">
           <div className="col-start-5 col-span-3 reveal">
             <ArticleThumbnail
@@ -121,6 +121,162 @@ export default function KitchensPage() {
               article={{
                 image: "/images/spaces-cocina-terrazzo.jpg",
                 title: "El nuevo salpicadero: texturas naturales",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 6. Hexagonal — mid, 6 col, centro */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-4 col-span-6 reveal">
+            <ArticleThumbnail
+              variant="mid"
+              article={{
+                image: "/images/kitchen-hexagonal.jpg",
+                title: "Geometría en la cocina: el poder del hexágono",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 7. Verde SMEG — small, 3 col, derecha */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-8 col-span-3 reveal">
+            <ArticleThumbnail
+              variant="small"
+              article={{
+                image: "/images/kitchen-verde-smeg.jpg",
+                title: "Verde que te quiero verde: elegancia retro",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 8. Luz onda — big, 7 col, izquierda */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-2 col-span-7 reveal">
+            <ArticleThumbnail
+              variant="big"
+              article={{
+                image: "/images/kitchen-luz-onda.jpg",
+                title: "La luz como escultura: ondas en la oscuridad",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 9. Negra minimalista — small, 4 col, centro-derecha */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-6 col-span-4 reveal">
+            <ArticleThumbnail
+              variant="small"
+              article={{
+                image: "/images/kitchen-negra.jpg",
+                title: "Negro absoluto: la cocina sin distracciones",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 10. Jardín — super, full width */}
+      <div className="pt-[180px] reveal">
+        <ArticleThumbnail
+          variant="super"
+          article={{
+            image: "/images/kitchen-jardin.jpg",
+            title: "Cocinar con vistas: donde el interior abraza el jardín",
+            category: "Espacios · Kitchens",
+          }}
+        />
+      </div>
+
+      {/* 11. Mármol isla — mid, 5 col, izquierda */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-2 col-span-5 reveal">
+            <ArticleThumbnail
+              variant="mid"
+              article={{
+                image: "/images/kitchen-marmol-isla.jpg",
+                title: "La isla de mármol: centro de gravedad",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 12. Subway oscura — small, 3 col, derecha */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-7 col-span-3 reveal">
+            <ArticleThumbnail
+              variant="small"
+              article={{
+                image: "/images/kitchen-subway-oscura.jpg",
+                title: "Subway en verde profundo: tradición reinventada",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 13. Rústica — big, 6 col, centro */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-3 col-span-6 reveal">
+            <ArticleThumbnail
+              variant="big"
+              article={{
+                image: "/images/kitchen-rustica.jpg",
+                title: "Cobre y madera: el alma rústica de cocinar",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 14. Limones — small, 4 col, izquierda */}
+      <div className="grid-container pt-[180px]">
+        <div className="grid-12">
+          <div className="col-start-2 col-span-4 reveal">
+            <ArticleThumbnail
+              variant="small"
+              article={{
+                image: "/images/kitchen-limones.jpg",
+                title: "Limones y piedra: color que despierta",
+                category: "Espacios · Kitchens",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* 15. Isla gris — mid, 5 col, centro-derecha */}
+      <div className="grid-container pt-[180px] pb-[180px]">
+        <div className="grid-12">
+          <div className="col-start-5 col-span-5 reveal">
+            <ArticleThumbnail
+              variant="mid"
+              article={{
+                image: "/images/kitchen-isla-gris.jpg",
+                title: "Gris sereno: la isla que lo reúne todo",
                 category: "Espacios · Kitchens",
               }}
             />
