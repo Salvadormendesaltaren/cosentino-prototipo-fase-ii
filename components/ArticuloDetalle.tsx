@@ -11,7 +11,7 @@ const MATERIALS = [
 ];
 
 export default function ArticuloDetalle() {
-  const { navigateTo } = useProtoCurtain();
+  const { navigateTo, goBack } = useProtoCurtain();
   const [headerDark, setHeaderDark] = useState(false);
   const [activeMaterial, setActiveMaterial] = useState(0);
   const heroRef = useRef<HTMLDivElement>(null);
@@ -38,7 +38,7 @@ export default function ArticuloDetalle() {
       {/* ═══ VOLVER — fixed sobre hero ═══ */}
       <div className="absolute top-[66px] left-0 right-0 z-40 px-[32px] pt-[16px]">
         <button
-          onClick={() => navigateTo("/prototipo/espacios")}
+          onClick={() => goBack()}
           className={`text-[14px] font-normal cursor-pointer transition-all duration-300 hover:opacity-70 ${
             headerDark ? "text-black/50" : "text-white/50"
           }`}

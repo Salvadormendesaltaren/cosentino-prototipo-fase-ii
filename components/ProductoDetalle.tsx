@@ -6,7 +6,7 @@ import { useProtoCurtain } from "@/app/prototipo/layout";
 import basePath from "@/lib/basePath";
 
 export default function ProductoDetalle() {
-  const { navigateTo } = useProtoCurtain();
+  const { navigateTo, goBack } = useProtoCurtain();
   const [headerDark, setHeaderDark] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
   const fullwidthRef = useRef<HTMLDivElement>(null);
@@ -34,7 +34,7 @@ export default function ProductoDetalle() {
       {/* ═══ VOLVER — fixed sobre hero ═══ */}
       <div className="absolute top-[66px] left-0 right-0 z-40 px-[32px] pt-[16px]">
         <button
-          onClick={() => navigateTo("/prototipo/articulo/continuidad-y-resistencia")}
+          onClick={() => goBack()}
           className={`text-[14px] font-normal cursor-pointer transition-all duration-300 hover:opacity-70 ${
             headerDark ? "text-black/50" : "text-white/50"
           }`}

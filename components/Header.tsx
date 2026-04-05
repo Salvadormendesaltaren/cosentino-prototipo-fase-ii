@@ -10,24 +10,34 @@ const NAV_LINKS = [
 
 interface HeaderProps {
   dark?: boolean;
+  /** Show solid white bg when scrolled (for pages with white content like Encuentra) */
+  withBg?: boolean;
 }
 
-export default function Header({ dark }: HeaderProps = {}) {
-  // If dark prop is provided, use it; otherwise fall back to scroll-based behavior
+export default function Header({ dark, withBg }: HeaderProps = {}) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    if (dark !== undefined) return;
-    const onScroll = () => setScrolled(window.scrollY > 80);
+    const onScroll = () => {
+      // Pages with explicit dark prop: just track scroll for withBg
+      // Pages without: switch to dark after scrolling past hero (~85vh)
+      const threshold = dark !== undefined ? 10 : window.innerHeight * 0.85;
+      setScrolled(window.scrollY > threshold);
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, [dark]);
 
   const isDark = dark !== undefined ? dark : scrolled;
+  const showBg = withBg;
 
   return (
     <nav
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+      style={{
+        background: showBg ? "#ffffff" : "transparent",
+      }}
     >
       <div className="flex items-center justify-between px-[32px] h-[66px]">
         {/* eslint-disable-next-line @next/next/no-img-element */}

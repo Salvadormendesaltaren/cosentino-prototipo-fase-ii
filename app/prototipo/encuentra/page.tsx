@@ -158,6 +158,8 @@ export default function EncuentraPage() {
   const [countrySearch, setCountrySearch] = useState("");
   const searchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pillRef = useRef<HTMLDivElement>(null);
+  const subSentinelRef = useRef<HTMLDivElement>(null);
+  const [subStuck, setSubStuck] = useState(false);
 
   /* ── Lists & sidebar ───────────────────────────────────────── */
   const [lists, setLists] = useState<SavedList[]>([]);
@@ -269,6 +271,18 @@ export default function EncuentraPage() {
     targets.forEach((t) => obs.observe(t));
     return () => obs.disconnect();
   }, [filterKey, revealRef, viewingListId, listViewMode]);
+
+  /* ── Sub-header stuck detection ──────────────────────────── */
+  useEffect(() => {
+    const sentinel = subSentinelRef.current;
+    if (!sentinel) return;
+    const obs = new IntersectionObserver(
+      ([e]) => setSubStuck(!e.isIntersecting),
+      { threshold: 0, rootMargin: "-66px 0px 0px 0px" },
+    );
+    obs.observe(sentinel);
+    return () => obs.disconnect();
+  }, [viewingListId]);
 
   /* ── Filter panel renderers ────────────────────────────────── */
   function renderProjectPanel() {
@@ -510,7 +524,31 @@ export default function EncuentraPage() {
      ═════════════════════════════════════════════════════════════ */
   return (
     <div className="relative w-full min-h-screen bg-white overflow-x-hidden" ref={revealRef}>
-      <Header dark />
+      <Header dark withBg={subStuck && !viewingListId} />
+
+      {/* ── Fixed sub-header: appears when in-flow bar scrolls away ── */}
+      {!viewingListId && (
+        <div
+          className="fixed top-[66px] left-0 right-0 z-[45] h-[30px] bg-white flex items-center transition-all duration-200"
+          style={{
+            opacity: subStuck ? 1 : 0,
+            boxShadow: subStuck ? "0 1px 4px rgba(0,0,0,0.08)" : "none",
+            pointerEvents: subStuck ? "auto" : "none",
+          }}
+        >
+          <div className="grid-container w-full">
+            <div className="flex items-center justify-between">
+              <p className="text-[12px] text-black/35 tracking-[0.02em]" style={{ fontWeight: 400 }}>
+                Navegando {filteredItems.length} proyecto{filteredItems.length !== 1 ? "s" : ""} y galerías
+              </p>
+              <button type="button" onClick={openMisListas} className="text-[12px] text-black/35 hover:text-black/60 tracking-[0.02em] cursor-pointer transition-colors flex items-center gap-[5px]">
+                <svg width="14" height="14" viewBox="0 0 16 20" fill="none" className="opacity-50"><path d="M1 1h14v18l-7-4-7 4V1z" stroke="currentColor" strokeWidth="1.3" /></svg>
+                Mis listas{lists.length > 0 ? ` (${lists.length})` : ""}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="grid-container pt-[120px] pb-[120px]" style={{ transition: "opacity 250ms ease", opacity: filtering ? 0 : 1 }}>
 
@@ -567,7 +605,8 @@ export default function EncuentraPage() {
         ) : (
           /* ── Normal browse view ──────────────────────────────── */
           <>
-            <div className="flex items-center justify-between mb-[20px]">
+            {/* In-flow info bar — fades out when fixed clone takes over */}
+            <div ref={subSentinelRef} className="flex items-center justify-between mb-[16px] transition-opacity duration-150" style={{ opacity: subStuck ? 0 : 1 }}>
               <p className="text-[12px] text-black/35 tracking-[0.02em]" style={{ fontWeight: 400 }}>
                 Navegando {filteredItems.length} proyecto{filteredItems.length !== 1 ? "s" : ""} y galerías
               </p>
