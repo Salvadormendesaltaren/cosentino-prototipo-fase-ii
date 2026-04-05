@@ -21,19 +21,48 @@ export default function ThreeColumns({ title, columns, onNavigate }: ThreeColumn
       )}
       <div className="grid-12 reveal-stagger">
         {columns.map((col, i) => (
-          <div key={i} className="col-span-4 flex flex-col reveal">
+          <div
+            key={i}
+            className={`col-span-4 flex flex-col reveal ${
+              col.isCard ? "bg-[#f5f5f5] rounded-[12px] p-[24px]" : ""
+            }`}
+          >
             <h3
               className="text-[18px] font-normal"
               style={{ color: "rgba(0, 0, 0, 0.75)", lineHeight: "26px" }}
             >
               {col.title}
             </h3>
-            <p
-              className="mt-[8px] text-black text-[16px] font-normal whitespace-pre-line"
-              style={{ lineHeight: "20px" }}
-            >
-              {col.body}
-            </p>
+            {col.isCard ? (
+              <div className="mt-[16px] flex flex-col gap-[16px]">
+                {col.body.split("\n\n").map((pair, j) => {
+                  const [label, value] = pair.split("\n");
+                  return (
+                    <div key={j}>
+                      <p
+                        className="text-[13px] font-normal uppercase tracking-[0.5px]"
+                        style={{ color: "rgba(0, 0, 0, 0.4)", lineHeight: "18px" }}
+                      >
+                        {label}
+                      </p>
+                      <p
+                        className="text-[16px] font-medium mt-[4px]"
+                        style={{ color: "rgba(0, 0, 0, 0.75)", lineHeight: "20px" }}
+                      >
+                        {value}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p
+                className="mt-[8px] text-black text-[16px] font-normal whitespace-pre-line"
+                style={{ lineHeight: "20px" }}
+              >
+                {col.body}
+              </p>
+            )}
             {col.link && (
               <a
                 href="#"

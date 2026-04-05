@@ -3,6 +3,7 @@ export interface Column {
   body: string;
   link?: string;
   goToSection?: number;
+  isCard?: boolean;
 }
 
 export interface Section {
@@ -13,6 +14,8 @@ export interface Section {
   loomId: string;
   bottomTitle: string;
   columns: Column[];
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export const sections: Section[] = [
@@ -20,8 +23,8 @@ export const sections: Section[] = [
     heroImage: "/hero.png",
     heroTitle: "Sobre el prototipo.\nDe la pantalla a la grandeza.",
     introText: [
-      "Con este concepto hemos querido poner en valor el diseño en la tecnología al servicio de soluciones funcionales y estéticas, que eleven branding, experiencia de producto, que inspiren y que conviertan.",
-      "El área que se nos ha pedido trabajar es compleja y contiene muchas decisiones detrás, es por eso que hemos querido trasladar todo el proceso en este documento.",
+      "Con este concepto hemos querido demostrar cómo el diseño y la tecnología pueden trabajar juntos al servicio de soluciones que eleven la marca, la experiencia de producto, que inspiren y que conviertan.",
+      "El área que se nos ha pedido trabajar es compleja y lleva detrás muchas decisiones. Por eso hemos querido trasladar todo el proceso a este documento.",
       "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
     ],
     videoLabel: "Video explicativo",
@@ -36,13 +39,13 @@ export const sections: Section[] = [
       },
       {
         title: "Cómo funciona el CMS",
-        body: "Hemos creado un sandbox y una pequeña guía práctica de uso del CMS que proponemos para la tecnología detrás de la gestión de contenidos.",
+        body: "Hemos creado un sandbox y una guía práctica del CMS que proponemos para gestionar los contenidos del área de inspiración.",
         link: "Saber más →",
         goToSection: 2,
       },
       {
         title: "Prototipo Navegable",
-        body: "Nos hemos sumergido en el problema, buscando los puntos clave de la experiencia de uso del área de inspiración, sus usuarios y los por qués que deben guiar nuestras decisiones.",
+        body: "Hemos construido un prototipo navegable que materializa las decisiones de diseño clave del proyecto. Tres tipologías de contenido —editorial, referencial y mixto— organizadas en dos formas de consumo distintas, cada una pensada para un modelo mental diferente del usuario: dejarse inspirar o buscar con precisión.",
         link: "Saber más →",
         goToSection: 3,
       },
@@ -52,9 +55,9 @@ export const sections: Section[] = [
     heroImage: "/hero-investigacion.png",
     heroTitle: "Investigación. Entender para resolver.",
     introText: [
-      "Con este concepto hemos querido poner en valor el diseño en la tecnología al servicio de soluciones funcionales y estéticas, que eleven branding, experiencia de producto, que inspiren y que conviertan.",
-      "El área que se nos ha pedido trabajar es compleja y contiene muchas decisiones detrás, es por eso que hemos querido trasladar todo el proceso en este documento.",
-      "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
+      "Antes de diseñar, necesitábamos entender cómo los distintos perfiles de usuario se relacionan con el contenido de inspiración. No es lo mismo un arquitecto que busca referencias de proyecto para enviar a su cliente, que un particular reformando su cocina, que un comercial de Cosentino preparando una visita, o un marmolista buscando aplicaciones de un material concreto.",
+      "Para ello hemos combinado una auditoría del área existente con conversaciones con dos estudios de arquitectura: Felipe Espinel, de 1118 Estudio, y Bea Jiménez, de Suav Estudio. Ambos nos han dado las pistas sobre cómo un área de inspiración puede convertirse en una herramienta profesional real, y no solo en un escaparate.",
+      "Las conclusiones de esta fase nos han llevado a identificar tres tipologías de contenido —puramente editorial, puramente referencial y un contenido mixto que es a la vez inspiración y referencia— y a entender que la clave no está solo en qué se muestra, sino en cómo el usuario espera encontrarlo según su modelo mental en cada momento.",
     ],
     videoLabel: "Video explicativo",
     loomId: "bdad78c149a34424905dd03bd5fbd9f7",
@@ -70,7 +73,7 @@ export const sections: Section[] = [
       },
       {
         title: "Conversaciones con profesionales",
-        body: "Hemos hablado con dos arquitectos que dirigen sendos estudios de arquitectura, con el objetivo de entender mejor cuál es la realidad del uso del área de inspiración.",
+        body: "Hemos hablado con Felipe Espinel, de 1118 Estudio, y con Bea Jiménez, de Suav Estudio, para entender cómo los profesionales se relacionan realmente con el área de inspiración y qué necesitan de ella.",
       },
     ],
   },
@@ -78,9 +81,9 @@ export const sections: Section[] = [
     heroImage: "/hero-cms.png",
     heroTitle: "Cómo funciona el CMS. Escalabilidad y sencillez nunca vista.",
     introText: [
-      "Con este concepto hemos querido poner en valor el diseño en la tecnología al servicio de soluciones funcionales y estéticas, que eleven branding, experiencia de producto, que inspiren y que conviertan.",
-      "El área que se nos ha pedido trabajar es compleja y contiene muchas decisiones detrás, es por eso que hemos querido trasladar todo el proceso en este documento.",
-      "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
+      "La tecnología detrás de la gestión de contenidos es tan importante como el diseño que la envuelve. Proponemos Contentful como CMS headless para el área de inspiración, una solución que permite a los equipos de contenido trabajar con total autonomía.",
+      "Su arquitectura desacoplada garantiza que el front-end pueda evolucionar sin depender de desarrollo: crear artículos, publicar proyectos, gestionar galerías y entrevistas sin tocar una línea de código.",
+      "Hemos preparado un sandbox en el que podéis probar la herramienta en vivo, crear contenidos y comprobar cómo se estructura la información que después alimenta el prototipo.",
     ],
     videoLabel: "Video explicativo",
     loomId: "285713651ecf4fc4899cb7ae055e7af1",
@@ -88,12 +91,13 @@ export const sections: Section[] = [
     columns: [
       {
         title: "Prueba el CMS en vivo",
-        body: "Hemos creado el Sandbox para que probéis Contentful en vivo. ¡Podéis tocar y romper todo lo que queráis!\n\nPara loguearte simplemente sigue el enlace y usa las credenciales que te hemos dejado",
+        body: "Hemos creado un sandbox para que probéis Contentful en vivo. ¡Podéis tocar y romper todo lo que queráis!\n\nSimplemente seguid el enlace y usad las credenciales que os hemos dejado.",
         link: "Probar Contentful →",
       },
       {
-        title: "Credenciales",
-        body: "Usuario:\nPassword:",
+        title: "Credenciales de acceso",
+        body: "Usuario\n—\n\nContraseña\n—",
+        isCard: true,
       },
     ],
   },
@@ -101,25 +105,27 @@ export const sections: Section[] = [
     heroImage: "/hero-prototipo.png",
     heroTitle: "Prototipo. Audacia para que marca y producto confluyan.",
     introText: [
-      "Con este concepto hemos querido poner en valor el diseño en la tecnología al servicio de soluciones funcionales y estéticas, que eleven branding, experiencia de producto, que inspiren y que conviertan.",
-      "El área que se nos ha pedido trabajar es compleja y contiene muchas decisiones detrás, es por eso que hemos querido trasladar todo el proceso en este documento.",
-      "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
+      "El prototipo se organiza en torno a cómo el usuario se relaciona con el contenido en cada momento. Hemos identificado tres tipologías: contenido puramente editorial (entrevistas, artículos), contenido puramente referencial (galerías de producto y aplicación) y un contenido mixto —los proyectos y casos de estudio— que es a la vez inspiración y referencia técnica.",
+      "Esa tercera tipología es la que aparece en las dos formas de consumo. El Magazine es un espacio desordenado y bello, como la vida misma, donde convive lo editorial con los proyectos para posicionar, conectar con la marca e inspirar. El área Encuentra es precisa y eficiente, como un Pinterest construido para Cosentino, donde los proyectos conviven con las galerías para que tanto un particular, un arquitecto, un comercial o un marmolista encuentren exactamente lo que necesitan.",
+      "Hemos puesto especial esfuerzo en que el área de inspiración funcione como herramienta: guardar proyectos en listas, compartirlas con clientes y consumirlas en formato editorial o funcional. El objetivo es que un profesional pueda enviar a su cliente una selección de referencias desde Cosentino, convirtiendo el área de inspiración en un motor de negocio.",
     ],
     videoLabel: "Video explicativo",
     loomId: "285713651ecf4fc4899cb7ae055e7af1",
     bottomTitle: "",
+    ctaLabel: "Explorar el prototipo →",
+    ctaHref: "/prototipo",
     columns: [
       {
         title: "No pretende cubrir todos los casos de uso",
-        body: "Aunque el prototipo tiene una apariencia realista, no puede ni pretende resolver todos los casos de uso. Es un área compleja con muchas implicaciones que requieren investigación.",
+        body: "Aunque el prototipo tiene una apariencia realista, no puede ni pretende resolver todos los casos de uso. Es un área compleja donde cada decisión afecta a múltiples perfiles de usuario y requiere validación en un entorno real.",
       },
       {
         title: "Toma de decisiones",
-        body: "Hemos querido mejorarnos a la hora de realizar esta exploración. Sin duda, nuestras decisiones deben evaluarse en un entorno real pero queremos mostrar las posibilidades que tenemos partiendo de las necesidades de la organización y nuestros usuarios.",
+        body: "Hemos querido ser ambiciosos con esta exploración. Nuestras decisiones deben evaluarse en un entorno real, pero queremos mostrar hasta dónde se puede llegar cuando se parte de las necesidades reales de la organización, sus profesionales y sus usuarios finales.",
       },
       {
-        title: "Conversaciones con profesionales",
-        body: "Hemos hablado con dos arquitectos que dirigen sendos estudios de arquitectura, con el objetivo de entender mejor cuál es la realidad del uso del área de inspiración.",
+        title: "Una herramienta, no un escaparate",
+        body: "El área de inspiración debe servir tanto para enamorar como para vender. Un arquitecto que envía a su cliente una lista de proyectos en Silestone. Un comercial de Cosentino que prepara una selección para un estudio. Un marmolista que busca aplicaciones para recomendar a un constructor. Hemos diseñado para que todos esos momentos ocurran aquí.",
       },
     ],
   },

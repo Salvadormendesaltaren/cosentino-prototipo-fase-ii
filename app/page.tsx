@@ -7,6 +7,7 @@ import IntroSection from "@/components/IntroSection";
 import ThreeColumns from "@/components/ThreeColumns";
 import Footer from "@/components/Footer";
 import { sections } from "@/lib/sections";
+import basePath from "@/lib/basePath";
 
 export default function Home() {
   const [active, setActive] = useState(0);
@@ -94,6 +95,16 @@ export default function Home() {
           columns={section.columns}
           onNavigate={handleSelect}
         />
+        {section.ctaLabel && section.ctaHref && (
+          <section className="grid-container pb-[16px]">
+            <a
+              href={`${basePath}${section.ctaHref}`}
+              className="inline-flex items-center h-[52px] px-[32px] bg-black text-white text-[16px] font-normal rounded-[8px] hover:opacity-80 transition-opacity duration-300"
+            >
+              {section.ctaLabel}
+            </a>
+          </section>
+        )}
         <Footer />
       </main>
     </>
