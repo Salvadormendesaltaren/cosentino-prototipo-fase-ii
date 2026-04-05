@@ -10,6 +10,41 @@ const MATERIALS = [
   { image: "/images/material-snowy-ibiza.png", brand: "Dekton", name: "Rem", aplicacion: "Revestimiento de pared", espesor: "12 mm", superficie: "45 m2" },
 ];
 
+function ArticleImage({ src, className, style, material, materialHref, inspireHref }: {
+  src: string;
+  className?: string;
+  style?: React.CSSProperties;
+  material?: string;
+  materialHref?: string;
+  inspireHref?: string;
+}) {
+  return (
+    <div className="relative group/img overflow-hidden">
+      <img src={src} alt="" className={className} style={style} />
+      {material && (
+        <div className="absolute bottom-0 left-0 right-0 flex items-center gap-[10px] px-[16px] py-[10px] bg-black/50 backdrop-blur-[8px] opacity-0 group-hover/img:opacity-100 transition-opacity duration-300">
+          <span className="w-[12px] h-[12px] border border-white/60 rounded-[2px] shrink-0" />
+          <a
+            href={`${basePath}${materialHref || "/prototipo/producto/cinder-craze"}`}
+            className="text-white text-[13px] hover:underline"
+            style={{ lineHeight: "normal" }}
+          >
+            {material}
+          </a>
+          <span className="text-white/40">|</span>
+          <a
+            href={`${basePath}${inspireHref || "/prototipo/encuentra"}`}
+            className="text-white text-[13px] hover:underline"
+            style={{ lineHeight: "normal" }}
+          >
+            Inspírame
+          </a>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function ArticuloDetalle() {
   const { navigateTo, goBack } = useProtoCurtain();
   const [headerDark, setHeaderDark] = useState(false);
@@ -134,10 +169,12 @@ export default function ArticuloDetalle() {
       <div className="grid-container pt-[160px]">
         <div className="grid-12">
           <div className="col-start-4 col-span-6">
-            <img
+            <ArticleImage
               src={`${basePath}/images/articulo-cocina-01.png`}
-              alt=""
               className="w-full h-auto"
+              material="Silestone - Snowy Ibiza"
+              materialHref="/prototipo/producto/cinder-craze"
+              inspireHref="/prototipo/encuentra"
             />
           </div>
         </div>
@@ -145,10 +182,12 @@ export default function ArticuloDetalle() {
 
       {/* ═══ HERO IMAGE FULL WIDTH ═══ */}
       <div className="grid-container pt-[240px]">
-        <img
+        <ArticleImage
           src={`${basePath}/images/articulo-salon-01.png`}
-          alt=""
           className="w-full h-auto"
+          material="Silestone - Snowy Ibiza"
+          materialHref="/prototipo/producto/cinder-craze"
+          inspireHref="/prototipo/encuentra"
         />
       </div>
 
@@ -187,10 +226,12 @@ export default function ArticuloDetalle() {
       <div className="grid-container pt-[212px]">
         <div className="grid-12">
           <div className="col-start-1 col-span-5">
-            <img
+            <ArticleImage
               src={`${basePath}/images/articulo-cocina-02.png`}
-              alt=""
               className="w-full h-auto"
+              material="Silestone - Snowy Ibiza"
+              materialHref="/prototipo/producto/cinder-craze"
+              inspireHref="/prototipo/encuentra"
             />
           </div>
         </div>
@@ -201,19 +242,23 @@ export default function ArticuloDetalle() {
         {/* ↑ 240px desde foto anterior */}
         <div className="grid-12">
           <div className="col-span-6">
-            <img
+            <ArticleImage
               src={`${basePath}/images/articulo-cocina-01.png`}
-              alt=""
               className="w-full object-cover"
               style={{ height: 720 }}
+              material="Silestone - Snowy Ibiza"
+              materialHref="/prototipo/producto/cinder-craze"
+              inspireHref="/prototipo/encuentra"
             />
           </div>
           <div className="col-span-6">
-            <img
+            <ArticleImage
               src={`${basePath}/images/articulo-salon-01.png`}
-              alt=""
               className="w-full object-cover"
               style={{ height: 720 }}
+              material="Silestone - Snowy Ibiza"
+              materialHref="/prototipo/producto/cinder-craze"
+              inspireHref="/prototipo/encuentra"
             />
           </div>
         </div>

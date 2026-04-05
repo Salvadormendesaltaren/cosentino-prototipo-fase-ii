@@ -96,9 +96,11 @@ export default function Home() {
           onNavigate={handleSelect}
         />
         {section.ctaLabel && section.ctaHref && (
-          <section className="grid-container pb-[16px]">
+          <section className="grid-container pt-[64px] pb-[16px]">
             <a
-              href={`${basePath}${section.ctaHref}`}
+              href={section.ctaHref.startsWith("http") ? section.ctaHref : `${basePath}${section.ctaHref}`}
+              target={section.ctaHref.startsWith("http") ? "_blank" : undefined}
+              rel={section.ctaHref.startsWith("http") ? "noopener noreferrer" : undefined}
               className="inline-flex items-center h-[52px] px-[32px] bg-black text-white text-[16px] font-normal rounded-[8px] hover:opacity-80 transition-opacity duration-300"
             >
               {section.ctaLabel}

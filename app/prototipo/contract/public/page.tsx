@@ -140,7 +140,7 @@ export default function PublicPage() {
           onMouseLeave={() => { if (searchMode) { searchTimeoutRef.current = setTimeout(() => setSearchMode(false), 5000); } }}
           onMouseEnter={() => { if (searchTimeoutRef.current) { clearTimeout(searchTimeoutRef.current); searchTimeoutRef.current = null; } }}
         >
-          <button className="cursor-pointer transition-opacity duration-300" style={{ opacity: 0.5 }} onClick={() => navigateTo("/prototipo")}>
+          <button className="font-medium cursor-pointer" onClick={() => navigateTo("/prototipo")}>
             Magazine
           </button>
           <button className="cursor-pointer transition-opacity duration-300" style={{ opacity: 0.5 }} onClick={() => navigateTo("/prototipo/encuentra")}>

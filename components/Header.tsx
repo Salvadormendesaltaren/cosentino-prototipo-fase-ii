@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import basePath from "@/lib/basePath";
 
 const NAV_LINKS = [
@@ -16,6 +16,8 @@ interface HeaderProps {
 
 export default function Header({ dark, withBg }: HeaderProps = {}) {
   const [scrolled, setScrolled] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const onScroll = () => {
@@ -52,12 +54,49 @@ export default function Header({ dark, withBg }: HeaderProps = {}) {
         </a>
         <div className="hidden lg:flex items-center gap-6">
           {NAV_LINKS.map((l) => {
-            if (l === "Inspiración" || l === "Donde Comprar") {
-              const href = l === "Inspiración" ? `${basePath}/prototipo` : `${basePath}/`;
+            if (l === "Inspiración") {
+              const textCls = `text-[14px] cursor-pointer transition-colors duration-300 ${isDark ? "text-black" : "text-white"}`;
+              return (
+                <div
+                  key={l}
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (dropdownTimeout.current) { clearTimeout(dropdownTimeout.current); dropdownTimeout.current = null; }
+                    setShowDropdown(true);
+                  }}
+                  onMouseLeave={() => {
+                    dropdownTimeout.current = setTimeout(() => setShowDropdown(false), 150);
+                  }}
+                >
+                  <span className={textCls} style={{ opacity: 0.6 }}>
+                    {l}
+                  </span>
+                  {showDropdown && (
+                    <div className="absolute top-full left-1/2 -translate-x-1/2 mt-[6px] flex flex-col items-center gap-[2px]">
+                      <a
+                        href={`${basePath}/prototipo`}
+                        className={textCls}
+                        style={{ opacity: 0.6 }}
+                      >
+                        Magazine
+                      </a>
+                      <a
+                        href={`${basePath}/prototipo/encuentra`}
+                        className={textCls}
+                        style={{ opacity: 0.6 }}
+                      >
+                        Encuentra
+                      </a>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+            if (l === "Donde Comprar") {
               return (
                 <a
                   key={l}
-                  href={href}
+                  href={`${basePath}/`}
                   className={`text-[14px] cursor-pointer transition-colors duration-300 ${
                     isDark ? "text-black" : "text-white"
                   }`}

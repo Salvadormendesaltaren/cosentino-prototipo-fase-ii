@@ -22,6 +22,14 @@ const SUB_HREFS: Record<string, string> = {
   Bathrooms: "/prototipo/espacios/bathrooms",
   Kitchens: "/prototipo/espacios/kitchens",
   Interiors: "/prototipo/espacios/interiors",
+  Facades: "/prototipo/espacios/facades",
+  Designers: "/prototipo/interviews/designers",
+  Architects: "/prototipo/interviews/architects",
+  Artists: "/prototipo/interviews/artists",
+  Hotels: "/prototipo/contract/hotels",
+  Offices: "/prototipo/contract/offices",
+  Retail: "/prototipo/contract/retail",
+  Public: "/prototipo/contract/public",
 };
 
 export default function PrototipoPage() {
@@ -105,6 +113,8 @@ export default function PrototipoPage() {
           <div className="col-start-4 col-span-5 reveal">
             <ArticleThumbnail
               variant="mid"
+              href="/prototipo/articulo/continuidad-y-resistencia"
+              onNavigate={navigateTo}
               article={{
                 image: "/images/martin-baas.jpg",
                 title: "De la poética al diseño: Martín Baas",
@@ -121,6 +131,8 @@ export default function PrototipoPage() {
           <div className="col-start-7 col-span-3 reveal">
             <ArticleThumbnail
               variant="small"
+              href="/prototipo/articulo/continuidad-y-resistencia"
+              onNavigate={navigateTo}
               article={{
                 image: "/images/spa-exterior.png",
                 title: "Spas de exterior: una tendencia en auge",
@@ -135,6 +147,8 @@ export default function PrototipoPage() {
       <div className="pt-[180px] reveal">
         <ArticleThumbnail
           variant="super"
+          href="/prototipo/articulo/continuidad-y-resistencia"
+          onNavigate={navigateTo}
           article={{
             image: "/images/studio-banana.jpg",
             label: "Spaces",
@@ -150,6 +164,8 @@ export default function PrototipoPage() {
           <div className="col-start-4 col-span-6 reveal">
             <ArticleThumbnail
               variant="big"
+              href="/prototipo/articulo/continuidad-y-resistencia"
+              onNavigate={navigateTo}
               article={{
                 image: "/images/as-little-design.png",
                 title: "As little design as possible",
@@ -166,6 +182,8 @@ export default function PrototipoPage() {
           <div className="col-start-3 col-span-3 reveal">
             <ArticleThumbnail
               variant="small"
+              href="/prototipo/articulo/continuidad-y-resistencia"
+              onNavigate={navigateTo}
               article={{
                 image: "/images/battersea.png",
                 title: "Battersea Residential",
@@ -182,6 +200,8 @@ export default function PrototipoPage() {
           <div className="col-start-7 col-span-5 reveal">
             <ArticleThumbnail
               variant="mid"
+              href="/prototipo/articulo/continuidad-y-resistencia"
+              onNavigate={navigateTo}
               article={{
                 image: "/images/cocina.png",
                 title: "Una cocina para cocinar",

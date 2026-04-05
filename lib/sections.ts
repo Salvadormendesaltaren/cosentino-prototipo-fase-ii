@@ -88,6 +88,8 @@ export const sections: Section[] = [
     videoLabel: "Video explicativo",
     loomId: "285713651ecf4fc4899cb7ae055e7af1",
     bottomTitle: "Probar el CMS",
+    ctaLabel: "Entrar en Contentful →",
+    ctaHref: "https://app.contentful.com",
     columns: [
       {
         title: "Prueba el CMS en vivo",
@@ -99,7 +101,7 @@ export const sections: Section[] = [
       },
       {
         title: "Qué podréis hacer",
-        body: "Crear y editar artículos, proyectos y galerías. Ver c��mo se estructuran los contenidos con modelos reutilizables. Comprobar cómo los cambios en el CMS se reflejan directamente en el front-end sin intervención de desarrollo.",
+        body: "Crear y editar artículos, proyectos y galerías. Ver cómo se estructuran los contenidos con modelos reutilizables. Comprobar cómo los cambios en el CMS se reflejan directamente en el front-end sin intervención de desarrollo.",
       },
     ],
   },
