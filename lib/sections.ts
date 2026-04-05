@@ -91,13 +91,15 @@ export const sections: Section[] = [
     columns: [
       {
         title: "Prueba el CMS en vivo",
-        body: "Hemos creado un sandbox para que probéis Contentful en vivo. ¡Podéis tocar y romper todo lo que queráis!\n\nSimplemente seguid el enlace y usad las credenciales que os hemos dejado.",
-        link: "Probar Contentful →",
+        body: "Hemos preparado un sandbox de Contentful para que podáis experimentar con la herramienta en primera persona. Crear contenidos, modificar estructuras, probar flujos de publicación: todo está abierto para que toquéis lo que queráis sin miedo a romper nada.",
       },
       {
-        title: "Credenciales de acceso",
-        body: "Usuario\n—\n\nContraseña\n—",
-        isCard: true,
+        title: "Recibiréis una invitación",
+        body: "Os enviaremos una invitación al espacio de Contentful por email. Una vez dentro, tendréis acceso completo al sandbox con los modelos de contenido que alimentan el prototipo.",
+      },
+      {
+        title: "Qué podréis hacer",
+        body: "Crear y editar artículos, proyectos y galerías. Ver c��mo se estructuran los contenidos con modelos reutilizables. Comprobar cómo los cambios en el CMS se reflejan directamente en el front-end sin intervención de desarrollo.",
       },
     ],
   },
