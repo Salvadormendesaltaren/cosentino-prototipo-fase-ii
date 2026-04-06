@@ -7,9 +7,10 @@ interface IntroSectionProps {
   introText: string[];
   videoLabel: string;
   loomId: string;
+  loomId2?: string;
 }
 
-export default function IntroSection({ introText, videoLabel, loomId }: IntroSectionProps) {
+export default function IntroSection({ introText, videoLabel, loomId, loomId2 }: IntroSectionProps) {
   const ref = useReveal();
 
   return (
@@ -31,7 +32,14 @@ export default function IntroSection({ introText, videoLabel, loomId }: IntroSec
           <p className="text-black text-[32px] font-medium mb-[16px]" style={{ lineHeight: "40px" }}>
             {videoLabel}
           </p>
-          <VideoEmbed loomId={loomId} />
+          {loomId2 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
+              <VideoEmbed loomId={loomId} />
+              <VideoEmbed loomId={loomId2} />
+            </div>
+          ) : (
+            <VideoEmbed loomId={loomId} />
+          )}
         </div>
       </div>
     </section>

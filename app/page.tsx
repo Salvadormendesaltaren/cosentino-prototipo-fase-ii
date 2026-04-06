@@ -89,6 +89,7 @@ export default function Home() {
           introText={section.introText}
           videoLabel={section.videoLabel}
           loomId={section.loomId}
+          loomId2={section.loomId2}
         />
         <ThreeColumns
           title={section.bottomTitle}

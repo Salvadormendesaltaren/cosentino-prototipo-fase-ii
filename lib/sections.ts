@@ -12,6 +12,7 @@ export interface Section {
   introText: string[];
   videoLabel: string;
   loomId: string;
+  loomId2?: string;
   bottomTitle: string;
   columns: Column[];
   ctaLabel?: string;
@@ -28,7 +29,7 @@ export const sections: Section[] = [
       "Cada apartado contiene un video explicativo así como los artefactos oportunos para acompañar el proceso.",
     ],
     videoLabel: "Video explicativo",
-    loomId: "285713651ecf4fc4899cb7ae055e7af1",
+    loomId: "36c50dac91534283b7252723e575f384",
     bottomTitle: "",
     columns: [
       {
@@ -61,6 +62,7 @@ export const sections: Section[] = [
     ],
     videoLabel: "Video explicativo",
     loomId: "bdad78c149a34424905dd03bd5fbd9f7",
+    loomId2: "3225544ac9b2492091318198fae9c03c",
     bottomTitle: "Fases de la investigación",
     columns: [
       {
@@ -86,7 +88,7 @@ export const sections: Section[] = [
       "Hemos preparado un sandbox en el que podéis probar la herramienta en vivo, crear contenidos y comprobar cómo se estructura la información que después alimenta el prototipo.",
     ],
     videoLabel: "Video explicativo",
-    loomId: "285713651ecf4fc4899cb7ae055e7af1",
+    loomId: "b600d1ac53364e6f85cf5a1165f55eee",
     bottomTitle: "Probar el CMS",
     ctaLabel: "Entrar en Contentful →",
     ctaHref: "https://app.contentful.com",
@@ -114,7 +116,7 @@ export const sections: Section[] = [
       "Hemos puesto especial esfuerzo en que el área de inspiración funcione como herramienta: guardar proyectos en listas, compartirlas con clientes y consumirlas en formato editorial o funcional. El objetivo es que un profesional pueda enviar a su cliente una selección de referencias desde Cosentino, convirtiendo el área de inspiración en un motor de negocio.",
     ],
     videoLabel: "Video explicativo",
-    loomId: "285713651ecf4fc4899cb7ae055e7af1",
+    loomId: "598ae6662fa743a98c8cc88be0979f2d",
     bottomTitle: "",
     ctaLabel: "Explorar el prototipo →",
     ctaHref: "/prototipo",
