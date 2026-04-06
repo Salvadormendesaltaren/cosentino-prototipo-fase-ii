@@ -12,7 +12,9 @@ export interface Section {
   introText: string[];
   videoLabel: string;
   loomId: string;
+  loomTitle?: string;
   loomId2?: string;
+  loomId2Title?: string;
   bottomTitle: string;
   columns: Column[];
   ctaLabel?: string;
@@ -60,9 +62,11 @@ export const sections: Section[] = [
       "Para ello hemos combinado una auditoría del área existente con conversaciones con dos estudios de arquitectura: Felipe Espinel, de 1118 Estudio, y Bea Jiménez, de Suav Estudio. Ambos nos han dado las pistas sobre cómo un área de inspiración puede convertirse en una herramienta profesional real, y no solo en un escaparate.",
       "Las conclusiones de esta fase nos han llevado a identificar tres tipologías de contenido —puramente editorial, puramente referencial y un contenido mixto que es a la vez inspiración y referencia— y a entender que la clave no está solo en qué se muestra, sino en cómo el usuario espera encontrarlo según su modelo mental en cada momento.",
     ],
-    videoLabel: "Video explicativo",
-    loomId: "3225544ac9b2492091318198fae9c03c",
-    loomId2: "bdad78c149a34424905dd03bd5fbd9f7",
+    videoLabel: "Videos explicativos",
+    loomId: "bdad78c149a34424905dd03bd5fbd9f7",
+    loomTitle: "Investigación. Auditoría del área de inspiración",
+    loomId2: "3225544ac9b2492091318198fae9c03c",
+    loomId2Title: "Investigación. Conversaciones con profesionales.",
     bottomTitle: "Fases de la investigación",
     columns: [
       {

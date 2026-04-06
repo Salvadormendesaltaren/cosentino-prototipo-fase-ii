@@ -7,10 +7,12 @@ interface IntroSectionProps {
   introText: string[];
   videoLabel: string;
   loomId: string;
+  loomTitle?: string;
   loomId2?: string;
+  loomId2Title?: string;
 }
 
-export default function IntroSection({ introText, videoLabel, loomId, loomId2 }: IntroSectionProps) {
+export default function IntroSection({ introText, videoLabel, loomId, loomTitle, loomId2, loomId2Title }: IntroSectionProps) {
   const ref = useReveal();
 
   return (
@@ -34,8 +36,28 @@ export default function IntroSection({ introText, videoLabel, loomId, loomId2 }:
           </p>
           {loomId2 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-[16px]">
-              <VideoEmbed loomId={loomId} />
-              <VideoEmbed loomId={loomId2} />
+              <div>
+                {loomTitle && (
+                  <h3
+                    className="text-[18px] font-normal mb-[12px]"
+                    style={{ color: "rgba(0, 0, 0, 0.75)", lineHeight: "26px" }}
+                  >
+                    {loomTitle}
+                  </h3>
+                )}
+                <VideoEmbed loomId={loomId} />
+              </div>
+              <div>
+                {loomId2Title && (
+                  <h3
+                    className="text-[18px] font-normal mb-[12px]"
+                    style={{ color: "rgba(0, 0, 0, 0.75)", lineHeight: "26px" }}
+                  >
+                    {loomId2Title}
+                  </h3>
+                )}
+                <VideoEmbed loomId={loomId2} />
+              </div>
             </div>
           ) : (
             <VideoEmbed loomId={loomId} />
