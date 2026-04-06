@@ -61,8 +61,8 @@ export const sections: Section[] = [
       "Las conclusiones de esta fase nos han llevado a identificar tres tipologías de contenido —puramente editorial, puramente referencial y un contenido mixto que es a la vez inspiración y referencia— y a entender que la clave no está solo en qué se muestra, sino en cómo el usuario espera encontrarlo según su modelo mental en cada momento.",
     ],
     videoLabel: "Video explicativo",
-    loomId: "bdad78c149a34424905dd03bd5fbd9f7",
-    loomId2: "3225544ac9b2492091318198fae9c03c",
+    loomId: "3225544ac9b2492091318198fae9c03c",
+    loomId2: "bdad78c149a34424905dd03bd5fbd9f7",
     bottomTitle: "Fases de la investigación",
     columns: [
       {
